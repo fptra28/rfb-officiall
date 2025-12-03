@@ -72,6 +72,10 @@ export default function ProfilPerusahaan() {
                   className="prose max-w-none mt-4" 
                   dangerouslySetInnerHTML={{ __html: t('perusahaan:aboutUs.p2') }} 
                 />
+                <div 
+                  className="prose max-w-none mt-4" 
+                  dangerouslySetInnerHTML={{ __html: t('perusahaan:aboutUs.p3') }} 
+                />
               </div>
             </div>
 

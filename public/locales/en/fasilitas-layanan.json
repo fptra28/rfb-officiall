@@ -3,36 +3,28 @@
   "title": "Facilities & Services",
   "items": [
     {
-      "title": "Professional Futures Brokerage Representatives",
-      "content": "<p>The company has professional <strong>Futures Brokerage Representatives</strong> who are always ready to provide services to prospective or existing customers in the form of education, administrative procedures, and transaction mechanisms for the <em>Alternative Trading System</em> at the Jakarta Futures Exchange.</p>"
+      "title": "Transaction Flexibility",
+      "content": "<p>Two-way transactions provide opportunities for clients to profit whether market prices move up or down. Liquid products with high price volatility open up various trading opportunities for clients.</p>"
     },
     {
-      "title": "Online Trading & Demo Account Facilities",
-      "content": "<p>This facility provides convenience for customers to transact through the internet network. The company also provides a <strong>demo account</strong> for transaction simulations to help prospective customers better understand and master the available trading platform.</p>"
+      "title": "Professional Futures Broker Representatives",
+      "content": "<p>We have professional <strong>Futures Broker Representatives</strong> who are ready to provide the best service to prospective clients and clients, including education, administrative assistance, and explanations of transaction mechanisms at the Jakarta Futures Exchange and the Alternative Trading System (ATS).</p>"
     },
     {
       "title": "Daily Transaction Reports",
-      "content": "<p>Every day, customers will receive a <strong>daily transaction report</strong> containing transaction records and developments. Customers can also access these reports directly through the <em>online trading platform</em> using the Temporary Statement or Daily Statement menu.</p>"
-    },
-    {
-      "title": "Online Fund Withdrawal",
-      "content": "<p><strong>Fund withdrawals</strong> can be made at any time by customers online through the features available on the platform. Withdrawal requests will be processed within a maximum of one working day (T+1).</p>"
+      "content": "<p>Every day, clients will receive a <strong>daily transaction report</strong> containing records and developments of transaction activities. The report can also be accessed independently through the trading platform in the Temporary Statement or Daily Statement menu.</p>"
     },
     {
       "title": "Segregated Account",
-      "content": "<p>All investor funds are stored in a <strong>Segregated Account</strong> separate from the company's assets and placed in custodian banks approved by BAPPEBTI such as BCA, CIMB Niaga, BNI, Mandiri, and Artha Graha. These funds are only used for customer transaction needs.</p>"
+      "content": "<p>All client funds are stored in a <strong>Segregated Account</strong> separate from the company's assets and placed in designated banks that are approved and supervised by BAPPEBTI, including BCA, CIMB Niaga, BNI, Mandiri, and Artha Graha. These funds are only used for client transaction purposes.</p>"
     },
     {
-      "title": "Transaction Flexibility",
-      "content": "<p><strong>Two-way transactions</strong> provide opportunities for customers to profit whether market prices rise or fall. Liquid products and high price volatility create various trading opportunities.</p>"
+      "title": "Online Trading & Demo Account Facility",
+      "content": "<p>This facility makes it easier for clients to conduct transactions through the website <a href=\"https://etrade.rifanberjangka.com\" target=\"_blank\" rel=\"noopener noreferrer\">etrade.rifanberjangka.com</a> while connected to the internet. The company also provides a <strong>demo account</strong> as a transaction simulation tool so that prospective clients can understand and master the trading platform before conducting real transactions.</p>"
     },
     {
-      "title": "Dispute Resolution",
-      "content": "<p>The dispute resolution mechanisms used when disputes arise in futures trading:</p><ol><li>Consensus Deliberation, which is a dispute resolution approach based on family principles.</li><li>Mediation facilitated by PT Bursa Berjangka Jakarta.</li><li>Badan Arbitrase Perdagangan Berjangka Komoditi (BAKTI).</li><li>State Court.</li></ol>"
-    },
-    {
-      "title": "SITNa",
-      "content": "<p><strong>SITNa</strong> is a facility provided by PT KBI (Persero) as a means of transparency in transactions. SITNa allows every customer to check if their transaction is registered at the Jakarta Futures Exchange (JFE) and the Clearing House for Futures and Options.</p>"
+      "title": "Online Fund Withdrawal",
+      "content": "<p>Fund withdrawals can be made at any time by clients online through the features available on the trading platform. Withdrawal requests will be processed within a maximum of one business day (T+1).</p>"
     }
   ]
 }

@@ -1,15 +1,22 @@
 {
   "title": "Petunjuk Transaksi",
+  "intro": "Nasabah dapat menyampaikan amanat transaksi secara online melalui platform trading yang disediakan. Untuk kenyamanan dan meminimalkan risiko kesalahan, disarankan Nasabah melakukan simulasi (demo trading) terlebih dahulu sebelum menggunakan akun riil.",
   "steps": {
-    "step1": "Nasabah dapat menyampaikan amanat secara online dan/atau melalui telepon. Dianjurkan Nasabah melakukan simulasi terlebih dahulu sebelum menggunakan {realtrading}.",
-    "step2": "Nasabah yang menyampaikan amanat secara online akan memperoleh {userid} dan {password} dari PT. Rifan Financindo Berjangka.",
-    "step3": "Untuk melakukan transaksi secara online, harus terpenuhi hal-hal berikut:",
+    "step1": "Mendapatkan Akses Trading",
+    "step1_desc": "Nasabah yang melakukan transaksi secara online akan memperoleh {userid} dan {password} resmi dari PT. Rifan Financindo Berjangka. Kredensial ini bersifat rahasia dan digunakan untuk login ke platform trading.",
+    "step2": "Persiapan Sebelum Transaksi",
+    "step2_desc": "Pastikan Anda telah memenuhi hal berikut:",
     "requirements": {
-      "internet": "Tersedia jaringan internet yang stabil.",
-      "access": "Akses ke:",
-      "login_url": "http://etrade.rifanberjangka.com/login.php",
-      "credentials": "Nasabah sudah memiliki {userid} dan {password} dari PT. Rifan Financindo Berjangka."
-    }
+      "internet": "Koneksi internet stabil",
+      "device": "Perangkat pendukung seperti laptop, PC, atau smartphone",
+      "access": "Akses ke platform online trading melalui alamat:",
+      "login_url": "http://etrade.rifanberjangka.com/login.php"
+    },
+    "step3": "Login ke Platform",
+    "step3_desc": [
+      "Masukkan {userid} dan {password} yang diberikan.",
+      "Pastikan data Anda benar sebelum menekan tombol login."
+    ]
   },
   "terms": {
     "realtrading": "real online trading",

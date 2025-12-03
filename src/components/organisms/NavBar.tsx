@@ -27,6 +27,7 @@ const NavBar = () => {
         { key: 'company-profile', label: t('menu.profile.submenu.companyProfile'), href: "/profil/perusahaan" },
         { key: 'legality', label: t('menu.profile.submenu.legality'), href: "/profil/legalitas" },
         { key: 'awards', label: t('menu.profile.submenu.awards'), href: "/profil/penghargaan" },
+        { key: 'facilities-services', label: t('menu.profile.submenu.facilitiesServices'), href: "/informasi/fasilitas-layanan" },
         { key: 'broker-representative', label: t('menu.profile.submenu.brokerRepresentative'), href: "/profil/wakil-pialang" },
         { key: 'general-info', label: t('menu.profile.submenu.generalInfo'), href: "/informasi/umum" },
         { key: 'general-video', label: t('menu.profile.submenu.generalVideo'), href: "/informasi/video-umum" },

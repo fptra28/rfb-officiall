@@ -1,15 +1,22 @@
 {
   "title": "Trading Guide",
+  "intro": "Clients can submit transaction orders online through the provided trading platform. For convenience and to minimize the risk of errors, it is recommended that clients conduct a simulation (demo trading) first before using a real account.",
   "steps": {
-    "step1": "Clients can submit orders online and/or via telephone. It is recommended that clients conduct a simulation first before using {realtrading}.",
-    "step2": "Clients who submit orders online will receive a {userid} and {password} from PT. Rifan Financindo Berjangka.",
-    "step3": "To conduct online transactions, the following requirements must be met:",
+    "step1": "Obtain Trading Access",
+    "step1_desc": "Clients who transact online will receive an official {userid} and {password} from PT. Rifan Financindo Berjangka. These credentials are confidential and used to log in to the trading platform.",
+    "step2": "Pre-Transaction Preparation",
+    "step2_desc": "Ensure you have met the following requirements:",
     "requirements": {
-      "internet": "Stable internet connection is available.",
-      "access": "Access to:",
-      "login_url": "http://etrade.rifanberjangka.com/login.php",
-      "credentials": "Client already has a {userid} and {password} from PT. Rifan Financindo Berjangka."
-    }
+      "internet": "Stable internet connection",
+      "device": "Supporting devices such as a laptop, PC, or smartphone",
+      "access": "Access to the online trading platform at:",
+      "login_url": "http://etrade.rifanberjangka.com/login.php"
+    },
+    "step3": "Login to Platform",
+    "step3_desc": [
+      "Enter the provided {userid} and {password}.",
+      "Verify your information is correct before clicking the login button."
+    ]
   },
   "terms": {
     "realtrading": "real online trading",

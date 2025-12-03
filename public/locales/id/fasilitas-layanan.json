@@ -3,36 +3,28 @@
   "title": "Fasilitas & Layanan",
   "items": [
     {
-      "title": "Wakil Pialang Berjangka Profesional",
-      "content": "<p>Perusahaan memiliki <strong>Wakil Pialang Berjangka</strong> profesional yang selalu siap memberikan pelayanan kepada calon nasabah atau nasabah berupa edukasi, prosedur administrasi, dan mekanisme transaksi <em>Sistem Perdagangan Alternatif</em> di Bursa Berjangka Jakarta.</p>"
+      "title": "Fleksibilitas Transaksi",
+      "content": "<p>Transaksi dua arah memberikan peluang bagi nasabah untuk meraih keuntungan baik saat harga pasar bergerak naik maupun turun. Produk yang likuid dengan tingkat volatilitas harga yang tinggi membuka beragam peluang trading bagi nasabah.</p>"
     },
     {
-      "title": "Fasilitas Online Trading & Demo Account",
-      "content": "<p>Fasilitas ini memberikan kemudahan bagi nasabah dalam bertransaksi melalui jaringan internet. Perusahaan juga menyediakan <strong>akun demo</strong> untuk simulasi transaksi agar calon nasabah lebih memahami dan menguasai platform trading yang tersedia.</p>"
+      "title": "Wakil Pialang Berjangka Profesional",
+      "content": "<p>Kami memiliki <strong>Wakil Pialang Berjangka</strong> yang profesional dan siap memberikan pelayanan terbaik kepada calon nasabah maupun nasabah, meliputi edukasi, pendampingan administrasi, serta penjelasan mengenai mekanisme transaksi di Bursa Berjangka Jakarta maupun pada Sistem Perdagangan Alternatif (SPA).</p>"
     },
     {
       "title": "Pelaporan Transaksi Setiap Hari",
-      "content": "<p>Setiap hari nasabah akan menerima <strong>laporan transaksi harian</strong> yang berisi catatan dan perkembangan transaksi. Nasabah juga dapat mengakses laporan tersebut langsung melalui <em>online trading platform</em> menggunakan menu Temporary Statement atau Daily Statement.</p>"
-    },
-    {
-      "title": "Penarikan Dana (Withdrawal) Secara Online",
-      "content": "<p><strong>Penarikan dana</strong> dapat dilakukan sewaktu-waktu oleh nasabah secara online melalui fitur yang tersedia di platform. Permintaan penarikan akan diupayakan agar dapat diproses maksimal satu hari kerja (T+1).</p>"
+      "content": "<p>Setiap hari, nasabah akan menerima <strong>laporan transaksi harian</strong> yang memuat catatan serta perkembangan aktivitas transaksi. Laporan tersebut juga dapat diakses secara mandiri melalui platform trading pada menu Temporary Statement atau Daily Statement.</p>"
     },
     {
       "title": "Rekening Terpisah (Segregated Account)",
-      "content": "<p>Semua dana investor disimpan dalam <strong>Segregated Account</strong> yang terpisah dari aset perusahaan dan ditempatkan di bank penyimpanan yang disetujui oleh BAPPEBTI seperti Bank BCA, CIMB Niaga, BNI, Mandiri, dan Artha Graha. Dana ini hanya digunakan untuk kebutuhan transaksi nasabah.</p>"
+      "content": "<p>Seluruh dana nasabah disimpan dalam <strong>Segregated Account</strong> yang terpisah dari aset perusahaan dan ditempatkan pada bank penyimpanan yang ditunjuk, disetujui dan diawasi oleh BAPPEBTI, antara lain Bank BCA, CIMB Niaga, BNI, Mandiri, dan Artha Graha. Dana tersebut hanya digunakan untuk kepentingan transaksi nasabah.</p>"
     },
     {
-      "title": "Fleksibilitas Transaksi",
-      "content": "<p><strong>Transaksi dua arah</strong> memberikan peluang bagi nasabah untuk meraih keuntungan baik saat harga pasar naik maupun turun. Produk yang likuid dan volatilitas harga yang tinggi menciptakan berbagai peluang trading.</p>"
+      "title": "Fasilitas Online Trading & Demo Account",
+      "content": "<p>Fasilitas ini memberikan kemudahan bagi nasabah untuk bertransaksi melalui laman website <a href=\"https://etrade.rifanberjangka.com\" target=\"_blank\" rel=\"noopener noreferrer\">etrade.rifanberjangka.com</a> selama terkoneksi jaringan internet. Perusahaan juga menyediakan <strong>akun demo</strong> sebagai sarana simulasi transaksi sehingga calon nasabah dapat memahami dan menguasai platform trading sebelum melakukan transaksi secara riil.</p>"
     },
     {
-      "title": "Sarana Penyelesaian Perselisihan",
-      "content": "<p>Sarana penyelesaian yang dipergunakan apabila terjadi perselisihan dalam kegiatan perdagangan berjangka:</p><ol><li>Musyawarah untuk Mufakat adalah suatu bentuk penyelesaian yang dilandasi azas kekeluargaan.</li><li>Mediasi yang difasilitasi oleh PT Bursa Berjangka Jakarta.</li><li>Badan Arbitrase Perdagangan Berjangka Komoditi (BAKTI).</li><li>Pengadilan Negeri.</li></ol>"
-    },
-    {
-      "title": "SITNa",
-      "content": "<p><strong>SITNa</strong> merupakan fasilitas yang disediakan oleh PT KBI (Persero) sebagai bentuk transparansi transaksi. SITNa memungkinkan setiap nasabah untuk melihat apakah transaksinya terdaftar di Bursa Berjangka Jakarta (BBJ) dan Kliring Berjangka Indonesia atau tidak.</p>"
+      "title": "Penarikan Dana (Withdrawal) Secara Online",
+      "content": "<p>Penarikan dana dapat dilakukan sewaktu-waktu oleh nasabah secara online melalui fitur yang tersedia pada platform trading. Permintaan penarikan akan diupayakan untuk diproses selambat-lambatnya satu hari kerja (T+1).</p>"
     }
   ]
 }

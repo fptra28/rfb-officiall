@@ -1,18 +1,25 @@
 {
-  "title": "Withdrawal Procedure",
-  "intro": "Fund Withdrawal ({withdrawal}) can be requested by the Client at any time, provided that the amount withdrawn does not exceed the {effectiveMargin} stated in the Client's daily transaction report ({statementReport}).",
-  "process_title": "Fund Withdrawal Process ({withdrawal})",
+  "title": "Fund Withdrawal Procedure",
+  "intro": "Funds can be withdrawn at any time through the trading platform as long as funds are available and do not exceed the Effective Margin in the Statement Report.",
   "steps": {
-    "step1": "Client logs in to the {withdrawal} menu on their real trading account to submit a withdrawal request in accordance with the applicable terms and conditions.",
-    "step2": "Client fills out the withdrawal request form completely and accurately.",
-    "step3": "Funds can only be transferred to an account under the Client's name that matches the previously approved Account Opening Application document.",
-    "step4": "The standard withdrawal process takes a maximum of {maxTime}. However, PT. Rifan Financindo Berjangka is committed to expediting the process to be completed within {targetTime}."
+    "step1": "Submit Withdrawal Request",
+    "step1_desc": "Log in to your real account on the trading platform, then select the Withdrawal menu.",
+    "step2": "Fill Out Online Form",
+    "step2_desc": "Complete the fund withdrawal application form with accurate information, including the withdrawal amount and destination bank account.",
+    "step3": "Account Verification",
+    "step3_desc": "Withdrawals can only be made to bank accounts under the Client's name as registered in the account opening documents.",
+    "step4": "Validation Process",
+    "step4_desc": "The operations team will verify fund availability, data accuracy, and your transaction status before processing the request.",
+    "step5": "Transfer Completion",
+    "step5_desc": "The withdrawal process takes a maximum of T+3 business days, with a commitment to faster processing at T+1 business days when possible.",
+    "step6": "Success Notification",
+    "step6_desc": "You will receive a notification once the funds have been successfully transferred to your account."
   },
   "terms": {
     "withdrawal": "Withdrawal",
     "effectiveMargin": "Effective Margin",
     "statementReport": "Statement Report",
-    "maxTime": "three working days (T+3)",
-    "targetTime": "one working day (T+1)"
+    "maxTime": "T+3 business days",
+    "targetTime": "T+1 business day"
   }
 }
