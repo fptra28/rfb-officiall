@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import ReactCountryFlag from 'react-country-flag';
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -14,19 +15,40 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="text-white">
-      <select
-        value={locale || 'id'}
-        onChange={handleLanguageChange}
-        className="border border-white rounded bg-transparent px-2 py-1 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-white cursor-pointer"
+    <div className="flex items-center space-x-2">
+      <button
+        onClick={() => router.push(asPath, asPath, { locale: 'id', scroll: false })}
+        className={`flex items-center space-x-1 px-2 py-1 rounded transition-colors ${locale === 'id' ? 'bg-white/20' : 'hover:bg-white/10'}`}
+        aria-label="Switch to Indonesian"
       >
-        <option className="text-black" value="id">
-          {t('indonesian')}
-        </option>
-        <option className="text-black" value="en">
-          {t('english')}
-        </option>
-      </select>
+        <ReactCountryFlag
+          countryCode="ID"
+          svg
+          style={{
+            width: '1.2em',
+            height: '1.2em',
+            borderRadius: '2px',
+          }}
+          title="Indonesia"
+        />
+      </button>
+      
+      <button
+        onClick={() => router.push(asPath, asPath, { locale: 'en', scroll: false })}
+        className={`flex items-center space-x-1 px-2 py-1 rounded transition-colors ${locale === 'en' ? 'bg-white/20' : 'hover:bg-white/10'}`}
+        aria-label="Switch to English"
+      >
+        <ReactCountryFlag
+          countryCode="US"
+          svg
+          style={{
+            width: '1.2em',
+            height: '1.2em',
+            borderRadius: '2px',
+          }}
+          title="English"
+        />
+      </button>
     </div>
   );
 };
