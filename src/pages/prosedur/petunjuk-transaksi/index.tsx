@@ -134,7 +134,9 @@ export default function PetunjukTransaksi() {
                                         <a
                                             href={requirements.login_url}
                                             className="text-green-600 hover:text-green-700 underline break-all ml-1"
-                                        />
+                                        >
+                                            {requirements.login_url}
+                                        </a>
                                     </li>
                                 </ul>
                             </li>

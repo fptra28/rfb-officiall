@@ -1,35 +1,23 @@
 {
   "title": "Karakteristik & Keunggulan",
   "efisiensi_modal": {
-    "title": "Efisiensi Modal",
-    "content": "Dengan menggunakan Margin Trading (dana jaminan) para investor dapat melakukan transaksi yang besar dengan modal yang relatif kecil, tidak perlu menggunakan dana 100% (full margin) sebagaimana perdagangan di pasar saham."
+    "title": "Sistem Leverage",
+    "content": "Melalui fasilitas Margin Trading dengan sistem leverage, investor dapat melakukan transaksi dengan nilai yang lebih besar dibandingkan modal yang disediakan. Nasabah tidak perlu menyetor dana 100% seperti pada perdagangan saham (full margin), sehingga modal yang relatif kecil sudah dapat digunakan untuk mengakses peluang transaksi yang lebih luas."
   },
   "fleksibilitas_transaksi": {
     "title": "Fleksibilitas Transaksi",
-    "content": "Transaksi memanfaatkan dua arah tren yang memungkinkan para investor untuk mendapatkan peluang keuntungan pada saat tren harga bergerak naik maupun turun."
+    "content": "Produk derivatif menawarkan fleksibilitas melalui mekanisme transaksi dua arah, sehingga nasabah dapat memanfaatkan peluang baik ketika harga bergerak naik maupun turun. Dengan fitur ini, peluang keuntungan tetap terbuka selama pasar menunjukkan pergerakan tren yang jelas."
   },
   "pergerakan_harga": {
-    "title": "Pergerakan Harga Sangat Fluktuatif",
-    "content": "Pergerakan harga harian yang besar dengan kisaran 100 - 500 poin pada index saham, 10 - 20 troy ounce pada emas Loco London dan 100 - 150 pips pada perdagangan forex akan memberikan peluang keuntungan yang besar dengan nilai kontrak (contract size) masing-masing US$ 5/poin, 100.000 per mata uang forex dan 100 troy ounce per emas Loco London dan nasabah hanya dibebankan biaya transaksi (fee) yang relatif kecil."
+    "title": "Pergerakan Harga yang Dinamis",
+    "content": "Instrumen derivatif memiliki karakteristik pergerakan harga yang fluktuatif, memberikan peluang transaksi yang lebih luas bagi nasabah. Pergerakan harian pada berbagai produk—mulai dari indeks saham yang dapat bergerak 100–500 poin, emas Loco London sebesar 10–20 troy ounce, hingga forex yang bergerak 100–150 pips—membuka potensi keuntungan yang signifikan. Dengan nilai kontrak seperti US$ 5 per poin untuk indeks, 100.000 per mata uang pada forex, serta 100 troy ounce untuk emas Loco London, nasabah dapat memaksimalkan peluang pasar dengan biaya transaksi yang relatif kecil."
   },
   "likuiditas_tinggi": {
     "title": "Likuiditas Tinggi",
-    "content": "Produk ini memiliki tingkat likuiditas yang sangat tinggi, dengan begitu para investor dapat melakukan transaksi beli dan jual kapan saja selama market berjalan dengan didukung oleh fasilitas online trading system."
+    "content": "Produk derivatif memiliki tingkat likuiditas yang sangat tinggi, sehingga nasabah dapat melakukan transaksi beli maupun jual kapan saja selama pasar berlangsung. Aktivitas perdagangan juga didukung oleh sistem online trading yang memungkinkan eksekusi cepat, transparan, dan mudah diakses."
   },
   "tanpa_batasan_waktu": {
-    "title": "Tanpa Batasan Waktu Untuk Posisi Terbuka",
-    "content": "Para nasabah dengan leluasa dapat menentukan sendiri berapa lama waktu untuk bertransaksi tanpa adannya pinalti atau biaya administrasi pada saat penarikan dana atau penutupan account."
-  },
-  "jenis_investasi": {
-    "title": "Jenis Investasi",
-    "content": "Ada dua jenis investasi yaitu:",
-    "fixed_rate": {
-      "title": "Fixed Rate / Kurs Tetap",
-      "content": "US$ 1 = Rp. 10.000 (kurs tetap)\nTerhindar dari resiko kerugian akibat fluktuasi USD/IDR"
-    },
-    "floating_rate": {
-      "title": "Floating Rate/Kurs Berjalan",
-      "content": "US $ 1 = US$ 1 (sesuai kurs USD/IDR)\nTidak ada fee dari pembukaan dan penarikan dana USD sebagian/ seluruh"
-    }
+    "title": "Tanpa Batasan Waktu untuk Posisi Terbuka",
+    "content": "Nasabah memiliki kebebasan penuh untuk menentukan durasi mempertahankan posisi transaksi tanpa adanya penalti maupun biaya administrasi saat melakukan penarikan dana atau penutupan akun. Fleksibilitas ini memberikan ruang bagi nasabah untuk menyesuaikan strategi dengan kondisi pasar."
   }
 }

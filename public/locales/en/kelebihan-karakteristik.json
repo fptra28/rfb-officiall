@@ -1,35 +1,23 @@
 {
   "title": "Characteristics & Advantages",
   "efisiensi_modal": {
-    "title": "Capital Efficiency",
-    "content": "By using Margin Trading (collateral funds), investors can conduct large transactions with relatively small capital, without needing to use 100% funds (full margin) as in stock market trading."
+    "title": "Leverage System",
+    "content": "Through the Margin Trading facility with a leverage system, investors can conduct transactions with greater value compared to the provided capital. Customers do not need to deposit 100% funds like in stock trading (full margin), so relatively small capital can already be used to access broader transaction opportunities."
   },
   "fleksibilitas_transaksi": {
     "title": "Transaction Flexibility",
-    "content": "Transactions take advantage of two-way trends, allowing investors to get profit opportunities when price trends move up or down."
+    "content": "Derivative products offer flexibility through a two-way transaction mechanism, so customers can take advantage of opportunities when prices move up or down. With this feature, profit opportunities remain open as long as the market shows clear trend movements."
   },
   "pergerakan_harga": {
-    "title": "Highly Fluctuating Price Movements",
-    "content": "Large daily price movements ranging from 100 - 500 points on stock indices, 10 - 20 troy ounces on Loco London gold, and 100 - 150 pips in forex trading will provide great profit opportunities with contract values of US$ 5/point, 100,000 per forex currency, and 100 troy ounces per Loco London gold, and customers are only charged relatively small transaction fees."
+    "title": "Dynamic Price Movements",
+    "content": "Derivative instruments have characteristics of fluctuating price movements, providing broader transaction opportunities for customers. Daily movements in various products—from stock indices that can move 100–500 points, Loco London gold by 10–20 troy ounces, to forex moving 100–150 pips—open up significant profit potential. With contract values such as US$ 5 per point for indices, 100,000 per currency in forex, and 100 troy ounces for Loco London gold, customers can maximize market opportunities with relatively small transaction costs."
   },
   "likuiditas_tinggi": {
     "title": "High Liquidity",
-    "content": "This product has very high liquidity, so investors can buy and sell transactions anytime during market hours, supported by an online trading system facility."
+    "content": "Derivative products have very high liquidity levels, so customers can conduct buy or sell transactions anytime during market hours. Trading activities are also supported by an online trading system that allows for fast, transparent, and easy access execution."
   },
   "tanpa_batasan_waktu": {
     "title": "No Time Limit for Open Positions",
-    "content": "Customers are free to determine how long to transact without any penalties or administrative fees when withdrawing funds or closing accounts."
-  },
-  "jenis_investasi": {
-    "title": "Types of Investment",
-    "content": "There are two types of investment:",
-    "fixed_rate": {
-      "title": "Fixed Rate / Fixed Exchange Rate",
-      "content": "US$ 1 = Rp. 10,000 (fixed rate)\nAvoid risk of loss due to USD/IDR fluctuations"
-    },
-    "floating_rate": {
-      "title": "Floating Rate / Floating Exchange Rate",
-      "content": "US$ 1 = US$ 1 (according to USD/IDR rate)\nNo fees for opening and withdrawing USD funds partially or fully"
-    }
+    "content": "Customers have full freedom to determine the duration of maintaining transaction positions without any penalties or administrative fees when withdrawing funds or closing accounts. This flexibility provides space for customers to adjust strategies according to market conditions."
   }
 }
