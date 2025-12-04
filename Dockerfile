@@ -48,6 +48,7 @@ RUN npm prune --omit=dev
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.* ./
+COPY --from=builder /app/next-i18next.config.js ./
 COPY --from=builder /app/package*.json ./
 
 EXPOSE 3000
