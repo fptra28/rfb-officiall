@@ -45,6 +45,7 @@ const NavBar = () => {
           submenu: [
             { key: 'kelebihan-karakteristik', label: t('menu.products.submenu.kelebihanKarakteristik'), href: "/informasi/kelebihan-karakteristik" },
             { key: 'ilustrasi-transaksi', label: t('menu.products.submenu.ilustrasiTransaksi'), href: "/prosedur/ilustrasi-transaksi" },
+            { key: 'products', label: t('menu.products.label'), href: "/produk/spa" },
           ]
         }
       ],
