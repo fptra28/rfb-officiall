@@ -52,7 +52,7 @@ export default function ProfilPerusahaan() {
     { src: "/assets/logo-jfx.png", alt: "JFX" },
     { src: "/assets/logo-kbi.png", alt: "KBI" },
     { src: "/assets/logo-aspebtindo.png", alt: "ASPEBTINDO" },
-    { src: "/assets/logo-bappebti.png", alt: "BAPPEBTI" },
+    // { src: "/assets/logo-bappebti.png", alt: "BAPPEBTI" },
   ];
 
   return (
