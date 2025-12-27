@@ -49,13 +49,16 @@ export default function ProfilPerusahaan() {
   }));
 
   const anggotaLogos = [
-    { src: "/assets/bappebti-logo.png", alt: "Bappebti" },
-    { src: "/assets/logo-ojk.png", alt: "OJK" },
-    { src: "/assets/logo-bankindonesia.png", alt: "Bank Indonesia" },
     { src: "/assets/logo-jfx.png", alt: "JFX" },
     { src: "/assets/logo-kbi.png", alt: "KBI" },
     { src: "/assets/logo-aspebtindo.png", alt: "ASPEBTINDO" },
     // { src: "/assets/logo-bappebti.png", alt: "BAPPEBTI" },
+  ];
+
+    const regulatorLogos = [
+    { src: "/assets/bappebti-logo.png", alt: "Bappebti" },
+    { src: "/assets/logo-ojk.png", alt: "OJK" },
+    { src: "/assets/logo-bankindonesia.png", alt: "Bank Indonesia" },
   ];
 
   return (
@@ -144,6 +147,28 @@ export default function ProfilPerusahaan() {
                     </div>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            {/* Berizin & Diawasi Oleh */}
+            <div className="bg-white rounded-xl shadow-md p-6">
+              <TitleH3 className="text-green-700 mb-6 border-b pb-2">
+                {t('perusahaan:berizinDiawasiOleh', 'Berizin & Diawasi Oleh')}
+              </TitleH3>
+
+              <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 py-4">
+                {regulatorLogos.map((logo, index) => (
+                  <div
+                    key={index}
+                    className="p-2 hover:bg-gray-50 rounded-lg transition-colors border border-gray-100 bg-white"
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.alt}
+                      className="h-12 w-auto max-h-12 object-contain"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 
