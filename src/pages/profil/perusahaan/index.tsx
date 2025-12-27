@@ -49,6 +49,9 @@ export default function ProfilPerusahaan() {
   }));
 
   const anggotaLogos = [
+    { src: "/assets/bappebti-logo.png", alt: "Bappebti" },
+    { src: "/assets/logo-ojk.png", alt: "OJK" },
+    { src: "/assets/logo-bankindonesia.png", alt: "Bank Indonesia" },
     { src: "/assets/logo-jfx.png", alt: "JFX" },
     { src: "/assets/logo-kbi.png", alt: "KBI" },
     { src: "/assets/logo-aspebtindo.png", alt: "ASPEBTINDO" },
