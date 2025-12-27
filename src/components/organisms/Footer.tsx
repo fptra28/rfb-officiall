@@ -84,7 +84,7 @@ const Footer = () => {
                     </div>
 
                     {/* Section 3 - Download Links */}
-                    <div className="flex flex-col gap-5">
+                    {/* <div className="flex flex-col gap-5">
                         <h1 className="text-xl font-bold">{t('downloadApp.title')}</h1>
                         <div className="flex items-center gap-5">
                             <a href="https://apps.apple.com/id/app/pro-trader-royalassetindo/id6502900138?l=id" target="_blank" rel="noopener noreferrer">
@@ -102,7 +102,7 @@ const Footer = () => {
                                 />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Section 4 - Company Info */}
