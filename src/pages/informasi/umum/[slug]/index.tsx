@@ -149,7 +149,7 @@ export default function BeritaDetail() {
                     <DetailBerita
                         date={formatDate(berita.created_at)}
                         title={berita.judul}
-                        img={`http://rfb-backend.test/img/berita/${berita.image}`}
+                        img={`https://rfbdev.newsmaker.id/img/berita/${berita.image}`}
                         content={berita.isi}
                         kategori={berita.kategori || "Informasi Umum"}
                     />

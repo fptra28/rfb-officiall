@@ -37,7 +37,7 @@ export default function PengumumanHome({ showHeader = true, className }: Pengumu
 
                 const data: Berita[] = await response.json();
 
-                const baseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || "http://rfb-backend.test").replace(/\/$/, "");
+                const baseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://rfbdev.newsmaker.id").replace(/\/$/, "");
 
                 // Mapping dan bentuk URL gambar dengan benar
                 const processedData = data
