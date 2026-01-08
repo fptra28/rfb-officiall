@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { parseMarketWsMessage, NormalizedMarketItem } from "@/utils/marketWs";
 
 interface MarketItem {
   symbol: string;
@@ -16,49 +17,87 @@ export default function MarketUpdate() {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
-    const fetchMarketData = async () => {
-      try {
-        const res = await fetch('/api/market');
+    let isActive = true;
+    let reconnectTimer: number | null = null;
+    let socket: WebSocket | null = null;
 
-        if (!res.ok) {
-          const errorText = `${res.status} ${res.statusText}`;
-          console.error('Respon error:', errorText);
-          setErrorMessage(errorText);
-          setMarketData([]);
-          return;
-        }
-
-        const data = await res.json();
-
-        const filteredData: MarketItem[] = (data as any[])
-          .filter((item): item is MarketItem => 
-            item.symbol && 
-            typeof item.last === 'number' &&
-            typeof item.percentChange === 'number'
-          )
-          .map((item) => ({
-            symbol: item.symbol,
-            last: item.last,
-            percentChange: item.percentChange,
-            high: item.high || 0,
-            low: item.low || 0,
-            open: item.open || 0,
-            prevClose: item.prevClose || 0,
-            valueChange: item.valueChange || 0
-          }));
-
-        setMarketData(filteredData);
-        setErrorMessage("");
-      } catch (error: any) {
-        console.error('Fetch gagal:', error);
-        setErrorMessage(error.message || "Gagal memuat data");
-        setMarketData([]);
+    const clearReconnectTimer = () => {
+      if (reconnectTimer !== null) {
+        window.clearTimeout(reconnectTimer);
+        reconnectTimer = null;
       }
     };
 
-    fetchMarketData();
-    const interval = setInterval(fetchMarketData, 10000);
-    return () => clearInterval(interval);
+    const handlePayload = (payload: NormalizedMarketItem[]) => {
+      if (!payload.length || !isActive) return;
+
+      const normalized = payload.map((item) => ({
+        symbol: item.symbol,
+        last: item.last,
+        percentChange: item.percentChange,
+        high: item.high ?? 0,
+        low: item.low ?? 0,
+        open: item.open ?? 0,
+        prevClose: item.prevClose ?? 0,
+        valueChange: item.valueChange ?? 0,
+      }));
+
+      setMarketData(normalized);
+      setErrorMessage("");
+    };
+
+    const handleMessageData = (raw: unknown) => {
+      const parsed = parseMarketWsMessage(raw);
+      handlePayload(parsed);
+    };
+
+    const connect = () => {
+      if (!isActive) return;
+      clearReconnectTimer();
+
+      socket = new WebSocket("wss://wsprc.royalassetindo.co.id");
+
+      socket.onopen = () => {
+        if (!isActive) return;
+        setErrorMessage("");
+      };
+
+      socket.onmessage = (event) => {
+        if (typeof event.data === "string") {
+          handleMessageData(event.data);
+          return;
+        }
+
+        if (event.data instanceof Blob) {
+          event.data.text().then(handleMessageData).catch(() => {});
+          return;
+        }
+
+        if (event.data instanceof ArrayBuffer) {
+          const text = new TextDecoder().decode(event.data);
+          handleMessageData(text);
+        }
+      };
+
+      socket.onerror = () => {
+        if (!isActive) return;
+        setErrorMessage("Gagal menghubungkan live quotes");
+      };
+
+      socket.onclose = () => {
+        if (!isActive) return;
+        setErrorMessage("Koneksi live quotes terputus");
+        reconnectTimer = window.setTimeout(connect, 3000);
+      };
+    };
+
+    connect();
+
+    return () => {
+      isActive = false;
+      clearReconnectTimer();
+      socket?.close();
+    };
   }, []);
 
   const formatPrice = (symbol: string, price: number) => {
