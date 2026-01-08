@@ -30,34 +30,18 @@ export default function BeritaSection({ className, limit = 6, showHeader = true 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('Mengambil data dari API...');
                 const response = await fetch('/api/portalberita');
                 if (!response.ok) {
                     throw new Error('Gagal mengambil data berita');
                 }
                 const data = await response.json();
-                console.log('Data berhasil diambil, total:', data.length);
-                
                 // Urutkan berita berdasarkan created_at (dari yang terbaru)
                 const sortedBerita = [...data].sort((a, b) => {
                     return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
                 });
                 
-                // Log detail setiap item
-                sortedBerita.forEach((item: any, index: number) => {
-                    console.log(`Item ${index + 1}:`, {
-                        id: item.id,
-                        judul: item.judul,
-                        created_at: item.created_at,
-                        gambar: item.gambar,
-                        hasImage: !!item.gambar,
-                        imageUrl: item.gambar ? new URL(item.gambar).toString() : 'Tidak ada gambar'
-                    });
-                });
-                
                 setBerita(Array.isArray(sortedBerita) ? sortedBerita : []);
             } catch (err) {
-                console.error('Error fetching berita:', err);
                 setError('Gagal memuat data berita. Silakan coba lagi nanti.');
             } finally {
                 setIsLoading(false);

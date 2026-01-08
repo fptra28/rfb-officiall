@@ -56,14 +56,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 ? `https://portalnews.newsmaker.id/uploads/${cleanImagePath}` 
                 : null;
             
-            console.log(`Item ID ${item.id}:`, {
-                judul,
-                imageIndex,
-                imagePath: item.images?.[imageIndex],
-                fullImageUrl: imageUrl,
-                hasImages: !!item.images?.length
-            });
-            
             return {
                 id: item.id,
                 judul,
