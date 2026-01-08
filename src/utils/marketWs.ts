@@ -68,14 +68,12 @@ const unwrapPayloadArray = (payload: unknown): MarketPayloadItem[] | null => {
   if (isRecord(payload)) {
     const entries = Object.entries(payload).filter(
       ([key, value]) => key !== "status" && isRecord(value)
-    );
+    ) as Array<[string, Record<string, unknown>]>;
     if (entries.length) {
-      return entries
-        .map(([key, value]) => ({
-          ...value,
-          symbol: key,
-        }))
-        .filter(isRecord);
+      return entries.map(([key, value]) => ({
+        ...value,
+        symbol: key,
+      }));
     }
     if (payload.symbol) {
       return [payload];
