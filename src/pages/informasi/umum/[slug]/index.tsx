@@ -5,7 +5,6 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import PageTemplate from '@/components/templates/PageTemplate';
 import ProfilContainer from '@/components/templates/PageContainer/Container';
-import NotFound from '@/components/moleculs/NotFound';
 import DetailBerita from '@/components/organisms/DetailBerita';
 
 type Berita = {

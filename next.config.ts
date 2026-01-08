@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "http",
+        hostname: "rfb-backend.test",
+        port: "",
+        pathname: "/**", // Mengizinkan semua path dari domain ini
+      },
+      {
+        protocol: "http",
         hostname: "localhost",
         port: "8000",
         pathname: "/**", // Untuk development local

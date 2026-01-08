@@ -14,6 +14,7 @@ type Berita = {
     judul: string;
     slug: string;
     isi: string;
+    order?: number;
     created_at: string;
     updated_at: string;
 };
@@ -39,20 +40,21 @@ export default function PengumumanHome({ showHeader = true, className }: Pengumu
                 const baseUrl = (process.env.NEXT_PUBLIC_API_BASE_URL || "https://rfbdev.newsmaker.id").replace(/\/$/, "");
 
                 // Mapping dan bentuk URL gambar dengan benar
-                const processedData = data.map((item) => {
-                    let imageUrl: string | undefined = undefined;
+                const processedData = data
+                    .map((item) => {
+                        let imageUrl: string | undefined = undefined;
 
-                    if (item.image) {
-                        // Contoh hasil akhir yang diinginkan:
-                        // https://rfbdev.newsmaker.id/img/berita/2025-07-07-xxx.jpg
-                        imageUrl = `${baseUrl}/img/berita/${item.image}`;
-                    }
+                        if (item.image) {
+                            imageUrl = `${baseUrl}/img/berita/${item.image}`;
+                        }
 
-                    return {
-                        ...item,
-                        image: imageUrl,
-                    };
-                });
+                        return {
+                            ...item,
+                            image: imageUrl,
+                            order: item.order || 0, // Default order 0 jika tidak ada
+                        };
+                    })
+                    .sort((a, b) => (b.order || 0) - (a.order || 0)); // Urutkan dari order tertinggi ke terendah
 
                 setPengumumanList(processedData);
             } catch (error) {

@@ -8,7 +8,6 @@ import ProdukContainer from "@/components/organisms/ProdukContainer";
 import BeritaSection from "@/components/organisms/BeritaSection";
 import AboutUs from "@/components/organisms/AboutUs";
 import InstitutionsSection from "@/components/organisms/InstitutionsSection";
-import TradingViewSection from "@/components/organisms/TradingViewSection";
 import Iso from "@/components/organisms/Market";
 import Pengumuman from "@/components/organisms/Pengumuman";
 
@@ -69,6 +68,8 @@ const HomePage = () => {
 
           <Iso />
 
+          <hr className="border-gray-200" />
+
           <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
             <ProdukContainer />
           </div>
@@ -76,23 +77,22 @@ const HomePage = () => {
           <hr className="border-gray-200" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
-            <BeritaSection className="mx-auto flex flex-col gap-7 px-4 lg:px-16" />
+            <BeritaSection/>
           </div>
-        </div>
 
-        <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52 my-20">
-          <Pengumuman showHeader={true} className="mx-auto px-4" />
-        </div>
+          <hr className="border-gray-200" />
 
-        <div className="container mx-auto px-4">
-          <div className="mt-8">
+          <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52 my-20">
+            <Pengumuman showHeader={true} className="mx-auto px-4" />
+          </div>
+
+          <hr className="border-gray-200" />
+
+          <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
             <InstitutionsSection />
           </div>
+
         </div>
-
-        <TradingViewSection />
-
-
       </div>
     </PageTemplate>
   );
