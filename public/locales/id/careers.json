@@ -2,6 +2,17 @@
   "pageTitle": "Karier",
   "joinTeam": "Bergabunglah Dengan Tim Kami",
   "noJobs": "Tidak ada lowongan tersedia saat ini",
+  "noJobsBadge": "Rekrutmen",
+  "noJobsTitle": "Belum ada lowongan baru",
+  "noJobsDescription": "Kami sedang menyiapkan kesempatan terbaik. Pantau halaman ini untuk update terbaru.",
+  "noJobsCards": {
+    "alertTitle": "Tetap Terhubung",
+    "alertDesc": "Ikuti kabar terbaru dari kami untuk info lowongan berikutnya.",
+    "growthTitle": "Tumbuh Bersama",
+    "growthDesc": "Kami mencari talenta yang ingin berkembang bersama tim.",
+    "cultureTitle": "Budaya Kolaboratif",
+    "cultureDesc": "Lingkungan kerja yang suportif dan saling menguatkan."
+  },
   "error": {
     "message": "Error",
     "retry": "Coba Lagi"

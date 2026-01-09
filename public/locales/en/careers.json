@@ -2,6 +2,17 @@
   "pageTitle": "Careers",
   "joinTeam": "Join Our Team",
   "noJobs": "No job openings available at the moment",
+  "noJobsBadge": "Recruitment",
+  "noJobsTitle": "No openings yet",
+  "noJobsDescription": "We are preparing the best opportunities. Check back here for the latest updates.",
+  "noJobsCards": {
+    "alertTitle": "Stay Connected",
+    "alertDesc": "Follow our updates for the next opening announcement.",
+    "growthTitle": "Grow Together",
+    "growthDesc": "We are looking for talent ready to grow with the team.",
+    "cultureTitle": "Collaborative Culture",
+    "cultureDesc": "A supportive environment that values teamwork."
+  },
   "error": {
     "message": "Error",
     "retry": "Try Again"
