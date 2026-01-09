@@ -18,6 +18,11 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
 
 const coerceNumber = (value: unknown, fallback = 0): number => {
   if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") {
+    const normalized = value.replace(/[%\s,]/g, "");
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : fallback;
+  }
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : fallback;
 };
@@ -50,15 +55,22 @@ const normalizeMapItem = (
   const last = coerceNumber(item.price, Number.NaN);
   if (!Number.isFinite(last)) return null;
 
-  const percentChange = coerceNumber(item.price_change, 0);
-
+  const open = coerceNumber(item.oprice);
+  let percentChange = coerceNumber(item.price_change, Number.NaN);
+  if (!Number.isFinite(percentChange)) {
+    if (open > 0) {
+      percentChange = ((last - open) / open) * 100;
+    } else {
+      percentChange = 0;
+    }
+  }
   return {
     symbol,
     last,
     percentChange,
     high: coerceNumber(item.hprice),
     low: coerceNumber(item.lprice),
-    open: coerceNumber(item.oprice),
+    open,
     valueChange: coerceNumber(item.price_change),
   };
 };
