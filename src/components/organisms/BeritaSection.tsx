@@ -74,7 +74,7 @@ export default function BeritaSection({ className, limit = 6, showHeader = true 
                         <div key={item.id} onClick={(e) => e.stopPropagation()}>
                             <NewsCard
                                 title={item.judul}
-                                date={new Date(item.created_at).toLocaleDateString()}
+                                date={item.created_at}
                                 content={item.isi}
                                 slug={item.slug}
                                 image={item.gambar}

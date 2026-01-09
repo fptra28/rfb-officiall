@@ -40,6 +40,9 @@ export default function NewsCard({
             year: "numeric",
         };
         const parsedDate = new Date(inputDate);
+        if (Number.isNaN(parsedDate.getTime())) {
+            return inputDate;
+        }
         return parsedDate.toLocaleDateString(currentLanguage === 'id' ? 'id-ID' : 'en-GB', options);
     };
 
