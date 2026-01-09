@@ -18,6 +18,7 @@ export default function Market() {
     const [marketData, setMarketData] = useState<MarketItem[]>([]);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const prevDataRef = useRef<MarketItem[]>([]);
+    const hiddenSymbols = new Set(['XAG10_BBJ', 'XAGF_BBJ']);
 
     useEffect(() => {
         let isActive = true;
@@ -34,7 +35,10 @@ export default function Market() {
         const handlePayload = (payload: NormalizedMarketItem[]) => {
             if (!payload.length || !isActive) return;
 
-            const updatedData: MarketItem[] = payload.map((item) => {
+            const filteredPayload = payload.filter((item) => !hiddenSymbols.has(item.symbol));
+            if (!filteredPayload.length) return;
+
+            const updatedData: MarketItem[] = filteredPayload.map((item) => {
                 const prevItem = prevDataRef.current.find((p: MarketItem) => p.symbol === item.symbol);
                 let direction: 'up' | 'down' | 'neutral';
 
@@ -50,7 +54,7 @@ export default function Market() {
             });
 
             setMarketData(updatedData);
-            prevDataRef.current = payload;
+            prevDataRef.current = filteredPayload;
             setErrorMessage("");
         };
 
