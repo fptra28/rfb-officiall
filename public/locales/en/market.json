@@ -1,4 +1,19 @@
 {
-    "title": "Current Market",
-    "loading": "Load Market Data..."
+    "title": "Real-time Market Data",
+    "loading": "Load Market Data...",
+    "table": {
+        "symbol": "Symbol",
+        "buy": "Buy",
+        "sell": "Sell",
+        "open": "Open",
+        "high": "High",
+        "low": "Low",
+        "close": "Close",
+        "percent": "%"
+    },
+    "cta": {
+        "kicker": "REAL-TIME MARKET DATA",
+        "headline": "Track open, low, and close from live quotes for currencies and commodities on this dedicated page.",
+        "button": "View Live Quotes"
+    }
 }

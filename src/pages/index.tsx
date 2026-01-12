@@ -10,6 +10,7 @@ import AboutUs from "@/components/organisms/AboutUs";
 import InstitutionsSection from "@/components/organisms/InstitutionsSection";
 import Iso from "@/components/organisms/Market";
 import Pengumuman from "@/components/organisms/Pengumuman";
+import LiveQuotesCta from "@/components/organisms/LiveQuotesCta";
 
 
 export const getStaticProps: GetStaticProps = async ({ locale = 'id' }) => {
@@ -67,6 +68,10 @@ const HomePage = () => {
           <hr className="border-gray-200" />
 
           <Iso />
+
+          <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
+            <LiveQuotesCta />
+          </div>
 
           <hr className="border-gray-200" />
 

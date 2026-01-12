@@ -43,11 +43,12 @@ const NavBar = () => {
           label: t('menu.products.submenu.spa'), 
           href: "/produk/spa",
           submenu: [
+            { key: 'products', label: t('menu.products.label'), href: "/produk/spa" },
             { key: 'kelebihan-karakteristik', label: t('menu.products.submenu.kelebihanKarakteristik'), href: "/informasi/kelebihan-karakteristik" },
             { key: 'ilustrasi-transaksi', label: t('menu.products.submenu.ilustrasiTransaksi'), href: "/prosedur/ilustrasi-transaksi" },
-            { key: 'products', label: t('menu.products.label'), href: "/produk/spa" },
           ]
-        }
+        },
+        { key: 'market-realtime', label: t('menu.products.submenu.marketRealtime'), href: "/produk/spa/data-pasar-real-time" }
       ],
     },
     {
@@ -276,6 +277,27 @@ const NavBar = () => {
                               <span className="block py-2 text-white">
                                 {sub.label}
                               </span>
+                            )}
+                            {sub.submenu && (
+                              <ul className="pl-4">
+                                {sub.submenu.map((nestedSub) => (
+                                  <li key={nestedSub.key}>
+                                    {nestedSub.href ? (
+                                      <LocaleLink
+                                        href={nestedSub.href}
+                                        className="block py-2 text-white/90 hover:text-green-400"
+                                        onClick={closeAllMenus}
+                                      >
+                                        {nestedSub.label}
+                                      </LocaleLink>
+                                    ) : (
+                                      <span className="block py-2 text-white/90">
+                                        {nestedSub.label}
+                                      </span>
+                                    )}
+                                  </li>
+                                ))}
+                              </ul>
                             )}
                           </li>
                         ))}

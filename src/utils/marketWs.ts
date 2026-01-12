@@ -4,9 +4,12 @@ export type NormalizedMarketItem = {
   symbol: string;
   last: number;
   percentChange: number;
+  bid?: number;
+  ask?: number;
   high?: number;
   low?: number;
   open?: number;
+  close?: number;
   prevClose?: number;
   valueChange?: number;
 };
@@ -35,14 +38,22 @@ const normalizeItem = (item: MarketPayloadItem): NormalizedMarketItem | null => 
   const percentChange = coerceNumber(item.percentChange, Number.NaN);
   if (!Number.isFinite(last) || !Number.isFinite(percentChange)) return null;
 
+  const bid = coerceNumber(item.bid ?? item.buy ?? item.bprice);
+  const ask = coerceNumber(item.ask ?? item.sell ?? item.aprice);
+  const prevClose = coerceNumber(item.prevClose ?? item.prev_close ?? item.pclose);
+  const close = coerceNumber(item.close ?? prevClose);
+
   return {
     symbol,
     last,
     percentChange,
+    bid,
+    ask,
     high: coerceNumber(item.high),
     low: coerceNumber(item.low),
     open: coerceNumber(item.open),
-    prevClose: coerceNumber(item.prevClose),
+    close,
+    prevClose,
     valueChange: coerceNumber(item.valueChange),
   };
 };
@@ -56,6 +67,10 @@ const normalizeMapItem = (
   if (!Number.isFinite(last)) return null;
 
   const open = coerceNumber(item.oprice);
+  const bid = coerceNumber(item.bprice ?? item.bid ?? item.buy);
+  const ask = coerceNumber(item.aprice ?? item.ask ?? item.sell);
+  const prevClose = coerceNumber(item.pclose ?? item.prevClose ?? item.prev_close);
+  const close = coerceNumber(item.close ?? prevClose);
   let percentChange = coerceNumber(item.price_change, Number.NaN);
   if (!Number.isFinite(percentChange)) {
     if (open > 0) {
@@ -68,9 +83,13 @@ const normalizeMapItem = (
     symbol,
     last,
     percentChange,
+    bid,
+    ask,
     high: coerceNumber(item.hprice),
     low: coerceNumber(item.lprice),
     open,
+    close,
+    prevClose,
     valueChange: coerceNumber(item.price_change),
   };
 };

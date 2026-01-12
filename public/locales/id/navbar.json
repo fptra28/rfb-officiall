@@ -19,6 +19,7 @@
       "submenu": {
         "jfx": "Multilateral (JFX)",
         "spa": "Bilateral (SPA)",
+        "marketRealtime": "Data Pasar Real-time",
         "registrationProcedure": "Prosedur Registrasi Online",
         "withdrawalProcedure": "Prosedur Penarikan Dana",
         "transactionGuide": "Petunjuk Transaksi",

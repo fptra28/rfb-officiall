@@ -19,6 +19,7 @@
       "submenu": {
         "jfx": "Multilateral (JFX)",
         "spa": "Bilateral (SPA)",
+        "marketRealtime": "Real-time Market Data",
         "registrationProcedure": "Online Registration Procedure",
         "withdrawalProcedure": "Fund Withdrawal Procedure",
         "transactionGuide": "Transaction Guide",

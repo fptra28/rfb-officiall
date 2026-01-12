@@ -1,4 +1,19 @@
 {
-    "title": "Pasar Saat Ini",
-    "loading": "Memuat Data Pasar..."
+    "title": "Data Pasar Real-time",
+    "loading": "Memuat Data Pasar...",
+    "table": {
+        "symbol": "Simbol",
+        "buy": "Buy",
+        "sell": "Sell",
+        "open": "Open",
+        "high": "High",
+        "low": "Low",
+        "close": "Close",
+        "percent": "%"
+    },
+    "cta": {
+        "kicker": "DATA PASAR REAL-TIME",
+        "headline": "Pantau open, low, dan close dari live quotes untuk mata uang dan komoditas melalui halaman khusus ini.",
+        "button": "Lihat Live Quotes"
+    }
 }
