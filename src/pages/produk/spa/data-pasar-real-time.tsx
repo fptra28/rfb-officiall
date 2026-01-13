@@ -22,15 +22,15 @@ export default function SpaRealtimeMarketPage() {
           <MarketTable
             showHeader={false}
             symbols={[
-              "AU1010_BBJ",
+              "XUL10",
               "BCO10_BBJ",
-              "EU1010_BBJ",
-              "GU1010_BBJ",
               "HKK50_BBJ",
               "JPK50_BBJ",
-              "UC1010_BBJ",
-              "UJ1010_BBJ",
-              "XUL10",
+              "AU10F_BBJ",
+              "EU10F_BBJ",
+              "GU10F_BBJ",
+              "UC10F_BBJ",
+              "UJ10F_BBJ",
             ]}
           />
 

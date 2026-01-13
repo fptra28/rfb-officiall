@@ -21,25 +21,32 @@ export default function Market({ showHeader = true, className }: MarketProps) {
 
     const normalizeSymbol = (symbol: string) => symbol.split("_")[0]?.toUpperCase?.() ?? symbol.toUpperCase();
 
-    const featuredQuotes: Array<{ symbol: string; name: string }> = [
-        { symbol: "HKK50", name: "Hanseng" },
-        { symbol: "JPK50", name: "Nikkei" },
-        { symbol: "XUL10", name: "Gold" },
-        { symbol: "BCO10", name: "BCO" },
-        { symbol: "AU1010", name: "AUD/USD" },
-        { symbol: "EU1010", name: "EUR/USD" },
-        { symbol: "GU1010", name: "GBP/USD" },
-        { symbol: "UC1010", name: "USD/CHF" },
-        { symbol: "UJ1010", name: "USD/JPY" },
+    const featuredGroups: Array<{ name: string; candidates: string[] }> = [
+        { name: "Gold", candidates: ["XUL10"] },
+        { name: "BCO", candidates: ["BCO10"] },
+        { name: "Hanseng", candidates: ["HKK50"] },
+        { name: "Nikkei", candidates: ["JPK50"] },
+        { name: "AUD/USD", candidates: ["AU10F", "AU1010"] },
+        { name: "EUR/USD", candidates: ["EU10F", "EU1010"] },
+        { name: "GBP/USD", candidates: ["GU10F", "GU1010"] },
+        { name: "USD/CHF", candidates: ["UC10F", "UC1010"] },
+        { name: "USD/JPY", candidates: ["UJ10F", "UJ1010"] },
     ];
 
-    const featuredIndex = new Map<string, number>(featuredQuotes.map((item, index) => [item.symbol, index]));
-    const featuredName = new Map<string, string>(featuredQuotes.map((item) => [item.symbol, item.name]));
+    const quoteByBaseSymbol = new Map<string, MarketItem>();
+    for (const item of marketData) {
+        const baseSymbol = normalizeSymbol(item.symbol);
+        if (!quoteByBaseSymbol.has(baseSymbol)) quoteByBaseSymbol.set(baseSymbol, item);
+    }
 
-    const filteredMarketData = marketData
-        .map((item) => ({ ...item, __baseSymbol: normalizeSymbol(item.symbol) }))
-        .filter((item) => featuredIndex.has(item.__baseSymbol))
-        .sort((a, b) => (featuredIndex.get(a.__baseSymbol) ?? 0) - (featuredIndex.get(b.__baseSymbol) ?? 0));
+    const filteredMarketData = featuredGroups
+        .map((group) => {
+            const quote =
+                group.candidates.map((candidate) => quoteByBaseSymbol.get(candidate)).find(Boolean) ?? null;
+            if (!quote) return null;
+            return { ...quote, __displayName: group.name };
+        })
+        .filter((item): item is MarketItem & { __displayName: string } => item !== null);
 
     const formatPrice = (symbol: string, price: number): string => {
         if (symbol.includes('IDR')) return price.toLocaleString('id-ID', { maximumFractionDigits: 0 });
@@ -72,10 +79,10 @@ export default function Market({ showHeader = true, className }: MarketProps) {
                             {t('loading')}
                         </div>
                     ) : (
-                        filteredMarketData.map((item: MarketItem & { __baseSymbol?: string }, index: number) => (
+                        filteredMarketData.map((item, index: number) => (
                             <MarketCard
                                 key={index}
-                                symbol={featuredName.get(item.__baseSymbol ?? normalizeSymbol(item.symbol)) ?? item.symbol}
+                                symbol={item.__displayName}
                                 last={formatPrice(item.symbol, item.last)}
                                 percentChange={formatPercent(item.percentChange)}
                                 direction={item.direction || 'neutral'}
