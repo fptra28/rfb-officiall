@@ -83,6 +83,7 @@ export default function Market({ showHeader = true, className }: MarketProps) {
                         ))
                     )}
                 </div>
+
             </div>
         </div>
     );

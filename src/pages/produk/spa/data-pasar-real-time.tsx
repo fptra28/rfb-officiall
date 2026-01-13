@@ -4,6 +4,7 @@ import { useTranslation } from "next-i18next";
 import PageTemplate from "@/components/templates/PageTemplate";
 import ProfilContainer from "@/components/templates/PageContainer/Container";
 import MarketTable from "@/components/organisms/MarketTable";
+import TradingViewAdvancedChart from "@/components/moleculs/TradingViewAdvancedChart";
 
 export const getStaticProps: GetStaticProps = async ({ locale = "id" }) => ({
   props: {
@@ -32,6 +33,12 @@ export default function SpaRealtimeMarketPage() {
               "XUL10",
             ]}
           />
+
+          <div className="mt-8 rounded-xl bg-[#0f172a] shadow-sm overflow-hidden">
+            <div className="h-[520px] w-full">
+              <TradingViewAdvancedChart symbol="OANDA:XAUUSD" theme="dark" />
+            </div>
+          </div>
         </ProfilContainer>
       </div>
     </PageTemplate>
