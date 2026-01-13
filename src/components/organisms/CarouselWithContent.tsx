@@ -14,15 +14,19 @@ interface Slide {
 
 const items = [
     { 
-        label: "Registrasi Akun Online", 
+        label: "Demo Registration", 
         link: "https://regol.rifan-financindo-berjangka.co.id/" 
     },
     { 
-        label: "Akun Demo", 
+        label: "Demo Account", 
         link: "https://demo.rifanberjangka.com/login" 
     },
     { 
-        label: "Akun Real", 
+        label: "Register Online", 
+        link: "https://regol.rifan-financindo-berjangka.co.id/login" 
+    },
+    { 
+        label: "Real Account", 
         link: "https://etrade.rifanberjangka.com/login",
         isReal: true
     },
