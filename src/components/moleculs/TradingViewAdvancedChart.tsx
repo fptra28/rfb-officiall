@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 
 type TradingViewAdvancedChartProps = {
   symbol?: string;
@@ -7,6 +7,9 @@ type TradingViewAdvancedChartProps = {
   locale?: string;
   interval?: string;
   timezone?: string;
+  title?: string;
+  backgroundColor?: string;
+  gridColor?: string;
 };
 
 export default function TradingViewAdvancedChart({
@@ -16,68 +19,41 @@ export default function TradingViewAdvancedChart({
   locale = 'en',
   interval = 'D',
   timezone = 'Etc/UTC',
+  title = 'nm-chart',
+  backgroundColor = '#0F0F0F',
+  gridColor = 'rgba(242,242,242,0.06)',
 }: TradingViewAdvancedChartProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const existingScript = container.querySelector('script[data-tradingview-widget="advanced-chart"]');
-    existingScript?.remove();
-
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-    script.async = true;
-    script.dataset.tradingviewWidget = 'advanced-chart';
-    const backgroundColor = theme === 'dark' ? 'rgba(15, 23, 42, 1)' : 'rgba(255, 255, 255, 1)';
-    const gridColor = theme === 'dark' ? 'rgba(148, 163, 184, 0.08)' : 'rgba(255, 255, 255, 0.04)';
-    script.innerHTML = JSON.stringify({
-      allow_symbol_change: true,
-      calendar: false,
-      details: false,
-      hide_side_toolbar: true,
-      hide_top_toolbar: false,
-      hide_legend: false,
-      hide_volume: false,
-      hotlist: false,
-      interval,
-      locale,
-      save_image: true,
-      style: '1',
+  const src = useMemo(() => {
+    const query = new URLSearchParams({
       symbol,
+      interval,
       theme,
-      timezone,
+      style: '1',
+      locale,
+      allow_symbol_change: 'true',
+      hide_side_toolbar: 'true',
+      hide_top_toolbar: 'false',
+      hide_legend: 'false',
+      hide_volume: 'true',
+      exclude_studies: 'STD;Volume',
+      details: 'true',
+      autosize: 'true',
       backgroundColor,
       gridColor,
-      watchlist: [],
-      withdateranges: false,
-      compareSymbols: [],
-      studies: ['STD;Stochastic_RSI'],
-      autosize: true,
+      timezone,
+      studies: 'STD;Stochastic_RSI',
     });
 
-    container.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, [interval, locale, symbol, theme, timezone]);
+    return `https://s.tradingview.com/embed-widget/advanced-chart/?${query.toString()}`;
+  }, [backgroundColor, gridColor, interval, locale, symbol, theme, timezone]);
 
   return (
-    <div
-      ref={containerRef}
-      className={['tradingview-widget-container', className].filter(Boolean).join(' ')}
-      style={{ height: '100%', width: '100%' }}
-    >
-      <div className="tradingview-widget-container__widget" style={{ height: 'calc(100% - 32px)', width: '100%' }} />
-      <div className="tradingview-widget-copyright">
-        <a href={`https://www.tradingview.com/symbols/${symbol?.split(':')?.[1] ?? ''}/?exchange=${symbol?.split(':')?.[0] ?? ''}`} rel="noopener nofollow" target="_blank">
-          <span className="blue-text">{symbol} chart</span>
-        </a>
-        <span className="trademark"> by TradingView</span>
-      </div>
-    </div>
+    <iframe
+      allowFullScreen
+      className={className}
+      src={src}
+      style={{ width: '100%', height: '100%', border: 0 }}
+      title={title}
+    />
   );
 }
