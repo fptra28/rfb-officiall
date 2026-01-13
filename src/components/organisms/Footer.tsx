@@ -147,6 +147,9 @@ const Footer = () => {
                             </div>
                         </a>
                     </div>
+                    <p className="text-xs md:text-sm text-zinc-200">
+                        {t('company.supervisedByKomdigi')}
+                    </p>
                 </div>
             </div>
 
