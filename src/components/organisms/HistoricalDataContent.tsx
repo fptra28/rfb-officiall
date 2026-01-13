@@ -89,10 +89,11 @@ export default function HistoricalDataContent() {
         }
 
         const data: ApiResponse = await response.json();
-        setApiData(data.data);
+        const visibleData = data.data.filter((item) => item.symbol !== 'LSI Daily');
+        setApiData(visibleData);
 
         // Daftar simbol untuk dropdown
-        const symbolOptions = data.data.map(item => ({
+        const symbolOptions = visibleData.map(item => ({
           value: item.symbol,
           label: item.symbol
         }));
@@ -383,19 +384,14 @@ export default function HistoricalDataContent() {
                   <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                     {t('close')}
                   </th>
-                  {(selectedSymbol.includes('HSI') || selectedSymbol.includes('SNI')) && (
+                  {selectedSymbol.includes('SNI') && (
                     <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                       {t('change')}
                     </th>
                   )}
-                  {(selectedSymbol.includes('HSI') || selectedSymbol.includes('SNI')) && (
+                  {selectedSymbol.includes('SNI') && (
                     <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                       {t('volume')}
-                    </th>
-                  )}
-                  {selectedSymbol.includes('HSI') && (
-                    <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
-                      {t('openInterest')}
                     </th>
                   )}
                 </tr>
@@ -418,19 +414,14 @@ export default function HistoricalDataContent() {
                     <td className="px-4 py-3 whitespace-nowrap text-sm text-[#4C4C4C] text-center">
                       {formatNumber(item.close)}
                     </td>
-                    {(selectedSymbol.includes('HSI') || selectedSymbol.includes('SNI')) && (
+                    {selectedSymbol.includes('SNI') && (
                       <td className={`px-4 py-3 whitespace-nowrap text-sm text-center ${item.change && parseFloat(item.change) < 0 ? 'text-red-600' : 'text-green-600'}`}>
                         {item.change || '-'}
                       </td>
                     )}
-                    {(selectedSymbol.includes('HSI') || selectedSymbol.includes('SNI')) && (
+                    {selectedSymbol.includes('SNI') && (
                       <td className="px-4 py-3 whitespace-nowrap text-sm text-[#4C4C4C] text-center">
                         {item.volume ? formatNumber(item.volume) : '-'}
-                      </td>
-                    )}
-                    {selectedSymbol.includes('HSI') && (
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-[#4C4C4C] text-center">
-                        {item.openInterest ? formatNumber(item.openInterest) : '-'}
                       </td>
                     )}
                   </tr>
