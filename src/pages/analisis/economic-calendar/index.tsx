@@ -4,6 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticProps } from 'next';
 import ProfilContainer from "@/components/templates/PageContainer/Container";
 import PageTemplate from "@/components/templates/PageTemplate";
+import ModalPopup from "@/components/moleculs/ModalPopup";
 
 interface CalendarEvent {
   time: string;       // Format: HH:MM
@@ -45,6 +46,8 @@ export default function EconomicCalendar() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<'today' | 'this-week' | 'previous-week'>('today');
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
   const fetchData = async (filter: string = 'today') => {
     setIsLoading(true);
@@ -121,6 +124,23 @@ export default function EconomicCalendar() {
 
   // Cek apakah menampilkan kolom tanggal
   const showDateColumn = ['this-week', 'previous-week'].includes(activeFilter);
+
+  const openDetail = (event: CalendarEvent) => {
+    setSelectedEvent(event);
+    setIsDetailOpen(true);
+  };
+
+  const closeDetail = () => {
+    setIsDetailOpen(false);
+    setSelectedEvent(null);
+  };
+
+  const displayValue = (value?: string) => {
+    const trimmed = value?.toString?.().trim?.() ?? '';
+    return trimmed.length ? trimmed : '-';
+  };
+
+  const selectedDateTime = selectedEvent ? parseDateTime(selectedEvent.time) : { date: '', time: '' };
 
   return (
     <PageTemplate title={t('title')}>
@@ -203,7 +223,14 @@ export default function EconomicCalendar() {
                               </tr>
                             )}
                             <tr
-                              className={`text-center transition ${
+                              role="button"
+                              tabIndex={0}
+                              title={t('detail.clickHint', 'Klik untuk lihat detail')}
+                              onClick={() => openDetail(row)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') openDetail(row);
+                              }}
+                              className={`text-center transition cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2 ${
                                 isHighImpact 
                                   ? 'bg-green-100 hover:bg-green-100' 
                                   : index % 2 === 0 
@@ -267,6 +294,112 @@ export default function EconomicCalendar() {
             </div>
           )}
         </ProfilContainer>
+
+        <ModalPopup
+          isOpen={isDetailOpen}
+          onClose={closeDetail}
+          title={t('detail.title', 'Detail Kalender Ekonomi')}
+          panelClassName="max-w-3xl"
+          watermarkSrc="/assets/logo-rfb.png"
+          watermarkAlt="RFB"
+        >
+          {selectedEvent ? (
+            <div className="space-y-4">
+              <div>
+                <div className="text-sm text-gray-500">
+                  {(selectedDateTime.date ? `${formatDate(selectedDateTime.date)} • ` : '') + displayValue(selectedDateTime.time)} • {displayValue(selectedEvent.country)} •{' '}
+                  <span className={getImpactClass(selectedEvent.impact)}>{displayValue(selectedEvent.impact)}</span>
+                </div>
+                <div className="text-lg font-semibold text-gray-900 mt-1">{displayValue(selectedEvent.figures)}</div>
+                {selectedEvent.details?.sources && (
+                  <div className="text-sm text-gray-600 mt-2">
+                    <span className="font-medium">{t('detail.sources', 'Sumber')}:</span> {displayValue(selectedEvent.details.sources)}
+                  </div>
+                )}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                <div className="rounded border border-zinc-200 p-3">
+                  <div className="text-gray-500">{t('previous')}</div>
+                  <div className="font-semibold text-gray-900">{displayValue(selectedEvent.previous)}</div>
+                </div>
+                <div className="rounded border border-zinc-200 p-3">
+                  <div className="text-gray-500">{t('forecast')}</div>
+                  <div className="font-semibold text-gray-900">{displayValue(selectedEvent.forecast)}</div>
+                </div>
+                <div className="rounded border border-zinc-200 p-3">
+                  <div className="text-gray-500">{t('actual')}</div>
+                  <div className="font-semibold text-gray-900">{displayValue(selectedEvent.actual)}</div>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-sm">
+                {selectedEvent.details?.measures && (
+                  <div>
+                    <span className="font-medium">{t('detail.measures', 'Mengukur')}:</span> {displayValue(selectedEvent.details.measures)}
+                  </div>
+                )}
+                {selectedEvent.details?.usualEffect && (
+                  <div>
+                    <span className="font-medium">{t('detail.usualEffect', 'Dampak Umum')}:</span> {displayValue(selectedEvent.details.usualEffect)}
+                  </div>
+                )}
+                {selectedEvent.details?.frequency && (
+                  <div>
+                    <span className="font-medium">{t('detail.frequency', 'Frekuensi')}:</span> {displayValue(selectedEvent.details.frequency)}
+                  </div>
+                )}
+                {selectedEvent.details?.nextReleased && (
+                  <div>
+                    <span className="font-medium">{t('detail.nextReleased', 'Rilis Berikutnya')}:</span> {displayValue(selectedEvent.details.nextReleased)}
+                  </div>
+                )}
+                {selectedEvent.details?.notes && (
+                  <div>
+                    <span className="font-medium">{t('detail.notes', 'Catatan')}:</span> {displayValue(selectedEvent.details.notes)}
+                  </div>
+                )}
+                {selectedEvent.details?.whyTraderCare && (
+                  <div>
+                    <span className="font-medium">{t('detail.whyTraderCare', 'Kenapa Penting')}:</span> {displayValue(selectedEvent.details.whyTraderCare)}
+                  </div>
+                )}
+              </div>
+
+              {Array.isArray(selectedEvent.details?.history) && selectedEvent.details!.history!.length > 0 && (
+                <div>
+                  <div className="font-semibold text-gray-900 mb-2">{t('detail.history', 'History')}</div>
+                  <div className="overflow-x-auto rounded border border-zinc-200">
+                    <table className="w-full text-sm min-w-[520px]">
+                      <thead className="bg-zinc-100 text-gray-700">
+                        <tr>
+                          <th className="p-2 text-left">{t('date')}</th>
+                          <th className="p-2 text-left">{t('previous')}</th>
+                          <th className="p-2 text-left">{t('forecast')}</th>
+                          <th className="p-2 text-left">{t('actual')}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {selectedEvent.details!.history!.map((h, idx) => (
+                          <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-zinc-50'}>
+                            <td className="p-2 border-t border-zinc-200 whitespace-nowrap">{displayValue(h.date)}</td>
+                            <td className="p-2 border-t border-zinc-200 whitespace-nowrap">{displayValue(h.previous)}</td>
+                            <td className="p-2 border-t border-zinc-200 whitespace-nowrap">{displayValue(h.forecast)}</td>
+                            <td className="p-2 border-t border-zinc-200 whitespace-nowrap">{displayValue(h.actual)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {!selectedEvent.details || Object.keys(selectedEvent.details).length === 0 ? (
+                <div className="text-sm text-gray-500">{t('detail.noDetails', 'Detail belum tersedia dari API.')}</div>
+              ) : null}
+            </div>
+          ) : null}
+        </ModalPopup>
       </div>
     </PageTemplate>
   );

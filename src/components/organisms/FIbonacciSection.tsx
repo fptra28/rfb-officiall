@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "next-i18next";
-import Image from "next/image";
 
 // Definisikan tipe untuk hasil perhitungan
 interface Result {
@@ -55,16 +54,6 @@ const CalculatorSection = ({ trend }: { trend: 'Uptrend' | 'Downtrend' }) => {
 
     return (
         <div className="p-6 bg-white shadow-md rounded-xl border border-gray-200">
-            <div className="mb-4">
-                <Image
-                    src={`/assets/${isUptrend ? "up-trend.png" : "down-trend.png"}`}
-                    alt={trend}
-                    width={500}
-                    height={200}
-                    className="rounded-md w-full object-contain"
-                />
-            </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
