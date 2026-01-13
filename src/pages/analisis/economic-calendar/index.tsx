@@ -45,7 +45,7 @@ export default function EconomicCalendar() {
   const [dataKalender, setDataKalender] = useState<CalendarEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeFilter, setActiveFilter] = useState<'today' | 'this-week' | 'previous-week'>('today');
+  const [activeFilter, setActiveFilter] = useState<'today' | 'this-week' | 'previous-week' | 'next-week'>('today');
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
@@ -75,7 +75,7 @@ export default function EconomicCalendar() {
     fetchData(activeFilter);
   }, [activeFilter]);
 
-  const handleFilterClick = (filter: 'today' | 'this-week' | 'previous-week') => {
+  const handleFilterClick = (filter: 'today' | 'this-week' | 'previous-week' | 'next-week') => {
     setActiveFilter(filter);
   };
 
@@ -106,7 +106,7 @@ export default function EconomicCalendar() {
       };
     }
     
-    // Jika formatnya 'YYYY-MM-DD HH.mm' (untuk this-week dan previous-week)
+    // Jika formatnya 'YYYY-MM-DD HH.mm' (untuk this-week, previous-week, next-week)
     if (timeStr.includes(' ') && timeStr.includes('-')) {
       const [datePart, timePart] = timeStr.split(' ');
       return {
@@ -123,7 +123,7 @@ export default function EconomicCalendar() {
   };
 
   // Cek apakah menampilkan kolom tanggal
-  const showDateColumn = ['this-week', 'previous-week'].includes(activeFilter);
+  const showDateColumn = ['this-week', 'previous-week', 'next-week'].includes(activeFilter);
 
   const openDetail = (event: CalendarEvent) => {
     setSelectedEvent(event);
@@ -168,6 +168,7 @@ export default function EconomicCalendar() {
                   {[
                     { key: 'today', label: t('filters.today') },
                     { key: 'this-week', label: t('filters.thisWeek') },
+                    { key: 'next-week', label: t('filters.nextWeek') },
                     { key: 'previous-week', label: t('filters.previousWeek') }
                   ].map((filter) => (
                     <button

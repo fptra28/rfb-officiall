@@ -36,18 +36,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { filter = 'today' } = req.query;
   
   // Validate filter value
-  const validFilters = ['today', 'this-week', 'previous-week'];
+  const validFilters = ['today', 'this-week', 'previous-week', 'next-week'];
   if (!validFilters.includes(filter as string)) {
     return res.status(400).json({ 
       status: 'error',
-      message: 'Invalid filter parameter. Must be one of: today, this-week, previous-week'
+      message: 'Invalid filter parameter. Must be one of: today, this-week, previous-week, next-week'
     });
   }
 
   const endpoints = {
     'today': 'https://endpoapi-production-3202.up.railway.app/api/calendar/today',
     'this-week': 'https://endpoapi-production-3202.up.railway.app/api/calendar/this-week',
-    'previous-week': 'https://endpoapi-production-3202.up.railway.app/api/calendar/previous-week'
+    'previous-week': 'https://endpoapi-production-3202.up.railway.app/api/calendar/previous-week',
+    'next-week': 'https://endpoapi-production-3202.up.railway.app/api/calendar/next-week'
   };
 
   try {
