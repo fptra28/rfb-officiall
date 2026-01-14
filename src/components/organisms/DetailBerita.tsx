@@ -16,7 +16,14 @@ const formatDate = (inputDate: string, locale: string = 'id') => {
         year: "numeric",
     };
     const parsedDate = new Date(inputDate);
-    return parsedDate.toLocaleDateString(locale, options);
+    if (Number.isNaN(parsedDate.getTime())) return inputDate;
+
+    const datePart = parsedDate.toLocaleDateString(locale, options);
+    const timePart = parsedDate.toLocaleTimeString(locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+    return `${datePart} • ${timePart}`;
 };
 
 const getValidImageUrl = (url: string): string => {

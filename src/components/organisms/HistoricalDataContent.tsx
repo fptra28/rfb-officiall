@@ -177,7 +177,7 @@ export default function HistoricalDataContent() {
     if (filteredData.length === 0) return;
 
     try {
-      const header = "Date,Open,High,Low,Close,Change,Volume,Event\n";
+      const header = `${t('date')},${t('open')},${t('high')},${t('low')},${t('close')},${t('change')},${t('volume')},Event\n`;
       const rows = filteredData.map(row => {
         const formatValue = (val: any) => val !== null && val !== undefined ? val : '';
         return [
@@ -272,7 +272,7 @@ export default function HistoricalDataContent() {
         setOpacity(1);
       };
 
-      const head = [[t('date'), 'Open', t('high'), t('low'), t('close')]];
+      const head = [[t('date'), t('open'), t('high'), t('low'), t('close')]];
       const body = currentItems.map((row) => [
         formatDisplayDate(row.date),
         row.open ?? '',
@@ -482,7 +482,7 @@ export default function HistoricalDataContent() {
                     {t('date')}
                   </th>
                   <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
-                    Open
+                    {t('open')}
                   </th>
                   <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                     {t('high')}

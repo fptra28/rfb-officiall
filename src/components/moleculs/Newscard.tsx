@@ -33,17 +33,22 @@ export default function NewsCard({
     const { t, i18n } = useTranslation('common');
     const currentLanguage = i18n.language || 'id';
 
-    const formatDate = (inputDate: string) => {
-        const options: Intl.DateTimeFormatOptions = {
+    const formatDateTime = (inputDate: string) => {
+        const parsedDate = new Date(inputDate);
+        if (Number.isNaN(parsedDate.getTime())) return inputDate;
+
+        const locale = currentLanguage === 'id' ? 'id-ID' : 'en-GB';
+        const datePart = parsedDate.toLocaleDateString(locale, {
             day: "2-digit",
             month: "long",
             year: "numeric",
-        };
-        const parsedDate = new Date(inputDate);
-        if (Number.isNaN(parsedDate.getTime())) {
-            return inputDate;
-        }
-        return parsedDate.toLocaleDateString(currentLanguage === 'id' ? 'id-ID' : 'en-GB', options);
+        });
+        const timePart = parsedDate.toLocaleTimeString(locale, {
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+
+        return `${datePart} • ${timePart}`;
     };
 
     const fullLink = `/analisis/berita/${slug}`;
@@ -73,7 +78,7 @@ export default function NewsCard({
                 </div>
             )}
             <div className="p-5 flex-1 flex flex-col">
-                <p className="text-sm text-gray-500 mb-2">{formatDate(date)}</p>
+                <p className="text-sm text-gray-500 mb-2">{formatDateTime(date)}</p>
                 <h3 className="text-xl font-semibold text-green-600 mb-3 line-clamp-2">{title}</h3>
                 <p className="text-gray-600 mb-4 text-base line-clamp-3 flex-1">{trimmedExcerpt}</p>
                 <div className="mt-auto">
