@@ -51,6 +51,11 @@ const CalculatorSection = ({ trend }: { trend: 'Uptrend' | 'Downtrend' }) => {
 
     const formatNumber = (num: number | undefined) => num !== undefined ? num.toFixed(2) : "0.00";
     const isUptrend = trend === 'Uptrend';
+    const trendLabel = isUptrend ? t('fibonacciSection.trend.uptrend') : t('fibonacciSection.trend.downtrend');
+    const trendIcon = isUptrend ? '↗' : '↘';
+    const trendClassName = isUptrend
+        ? 'bg-green-50 text-green-700 border-green-200'
+        : 'bg-red-50 text-red-700 border-red-200';
 
     return (
         <div className="p-6 bg-white shadow-md rounded-xl border border-gray-200">
@@ -87,6 +92,13 @@ const CalculatorSection = ({ trend }: { trend: 'Uptrend' | 'Downtrend' }) => {
                         {t('fibonacciSection.calculate')}
                     </button>
                 </div>
+            </div>
+
+            <div className="mb-3 flex justify-center">
+                <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold ${trendClassName}`}>
+                    <span aria-hidden="true">{trendIcon}</span>
+                    {trendLabel}
+                </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
