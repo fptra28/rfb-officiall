@@ -8,13 +8,13 @@ export default function VideoSection() {
         { 
             title: t('videos.companyProfile.title'), 
             desc: t('videos.companyProfile.description'), 
-            videoUrl: "https://www.youtube.com/embed/RWDEw0kIaEI?si=GxnrdoErsgDDicfI" 
+            videoUrl: "https://www.youtube.com/embed/UQ2Eg-XG9zM"
         },
-        { 
-            title: t('videos.companyProfile.title'), 
-            desc: t('videos.companyProfile.description'), 
-            videoUrl: "https://www.youtube.com/embed/RWDEw0kIaEI?si=GxnrdoErsgDDicfI" 
-        },
+        // { 
+        //     title: t('videos.companyProfile.title'), 
+        //     desc: t('videos.companyProfile.description'), 
+        //     videoUrl: "https://www.youtube.com/embed/UQ2Eg-XG9zM"
+        // },
     ];
 
     return (
