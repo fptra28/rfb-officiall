@@ -6,13 +6,13 @@ interface HistoricalDataItem {
   symbol: string;
   date: string;
   event: string | null;
-  open: number | null;
-  high: number | null;
-  low: number | null;
-  close: number | null;
+  open: string | null;
+  high: string | null;
+  low: string | null;
+  close: string | null;
   change: string | null;
-  volume: number | null;
-  openInterest: number | null;
+  volume: string | null;
+  openInterest: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -89,7 +89,7 @@ export default function HistoricalDataContent() {
         }
 
         const data: ApiResponse = await response.json();
-        const visibleData = data.data.filter((item) => item.symbol !== 'LSI Daily');
+        const visibleData = data.data.filter((item) => !/LSI/i.test(item.symbol));
         setApiData(visibleData);
 
         // Daftar simbol untuk dropdown
@@ -207,10 +207,112 @@ export default function HistoricalDataContent() {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    if (currentItems.length === 0) return;
+
+    try {
+      const [{ jsPDF, GState }, autoTableModule] = await Promise.all([import('jspdf'), import('jspdf-autotable')]);
+
+      const autoTable = autoTableModule.default as any;
+
+      const doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'pt',
+        format: 'a4',
+      });
+
+      const title = `Historical Data${selectedSymbol ? ` - ${selectedSymbol}` : ''}`;
+      const range = `${fromDate || 'start'} to ${toDate || 'end'}`;
+      const pageInfo = `Page ${currentPage} of ${Math.max(1, totalPages)}`;
+
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+
+      const loadWatermarkDataUrl = async (): Promise<string | null> => {
+        try {
+          const response = await fetch('/assets/logo-rfb.png');
+          if (!response.ok) return null;
+          const blob = await response.blob();
+          return await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(typeof reader.result === 'string' ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        } catch {
+          return null;
+        }
+      };
+
+      const watermarkDataUrl = await loadWatermarkDataUrl();
+
+      const drawHeader = () => {
+        doc.setFontSize(14);
+        doc.text(title, 40, 40);
+        doc.setFontSize(10);
+        doc.text(range, 40, 58);
+        doc.text(pageInfo, pageWidth - 40, 58, { align: 'right' });
+      };
+
+      const drawWatermark = () => {
+        if (!watermarkDataUrl) return;
+
+        const watermarkWidth = pageWidth * 0.35;
+        const watermarkHeight = watermarkWidth;
+        const x = (pageWidth - watermarkWidth) / 2;
+        const y = (pageHeight - watermarkHeight) / 2;
+
+        const setOpacity = (opacity: number) => {
+          if (typeof (doc as any).setGState !== 'function' || typeof GState !== 'function') return;
+          (doc as any).setGState(new (GState as any)({ opacity }));
+        };
+
+        setOpacity(0.12);
+        doc.addImage(watermarkDataUrl, 'PNG', x, y, watermarkWidth, watermarkHeight);
+        setOpacity(1);
+      };
+
+      const head = [[t('date'), 'Open', t('high'), t('low'), t('close')]];
+      const body = currentItems.map((row) => [
+        formatDisplayDate(row.date),
+        row.open ?? '',
+        row.high ?? '',
+        row.low ?? '',
+        row.close ?? '',
+      ]);
+
+      autoTable(doc, {
+        head,
+        body,
+        startY: 80,
+        styles: { fontSize: 9, cellPadding: 4 },
+        headStyles: { fillColor: [39, 39, 42] },
+        columnStyles: {
+          0: { cellWidth: 110 },
+          1: { halign: 'right' },
+          2: { halign: 'right' },
+          3: { halign: 'right' },
+          4: { halign: 'right' },
+        },
+        didDrawPage: () => {
+          drawWatermark();
+          drawHeader();
+        },
+      });
+
+      doc.save(
+        `historical-data-${selectedSymbol || 'all'}-${fromDate || 'start'}-to-${toDate || 'end'}-page-${currentPage}.pdf`,
+      );
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      setError(t('error.download'));
+    }
+  };
+
   // Return value as is without formatting
-  const formatNumber = (value: number | null) => {
+  const formatNumber = (value: string | null) => {
     if (value === null || value === undefined) return '-';
-    return value.toString();
+    return value;
   };
 
   // Format tanggal untuk tampilan
@@ -347,6 +449,13 @@ export default function HistoricalDataContent() {
               >
                 <span>{t('download')}</span>
               </button>
+              <button
+                onClick={handleDownloadPdf}
+                disabled={isLoading || filteredData.length === 0}
+                className="px-2.5 py-1.5 bg-zinc-800 text-white rounded-md hover:bg-zinc-900 transition-colors text-xs whitespace-nowrap flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span>PDF</span>
+              </button>
             </div>
           </div>
         </div>
@@ -384,16 +493,6 @@ export default function HistoricalDataContent() {
                   <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
                     {t('close')}
                   </th>
-                  {selectedSymbol.includes('SNI') && (
-                    <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
-                      {t('change')}
-                    </th>
-                  )}
-                  {selectedSymbol.includes('SNI') && (
-                    <th scope="col" className="px-4 py-3 text-center text-xs font-medium text-white uppercase tracking-wider">
-                      {t('volume')}
-                    </th>
-                  )}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-[#E5E7EB]">
@@ -414,16 +513,6 @@ export default function HistoricalDataContent() {
                     <td className="px-4 py-3 whitespace-nowrap text-sm text-[#4C4C4C] text-center">
                       {formatNumber(item.close)}
                     </td>
-                    {selectedSymbol.includes('SNI') && (
-                      <td className={`px-4 py-3 whitespace-nowrap text-sm text-center ${item.change && parseFloat(item.change) < 0 ? 'text-red-600' : 'text-green-600'}`}>
-                        {item.change || '-'}
-                      </td>
-                    )}
-                    {selectedSymbol.includes('SNI') && (
-                      <td className="px-4 py-3 whitespace-nowrap text-sm text-[#4C4C4C] text-center">
-                        {item.volume ? formatNumber(item.volume) : '-'}
-                      </td>
-                    )}
                   </tr>
                 ))}
               </tbody>
