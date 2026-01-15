@@ -18,11 +18,19 @@ export function useMarketQuotes(options: UseMarketQuotesOptions = {}) {
 
   const [quotes, setQuotes] = useState<MarketQuote[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const prevDataRef = useRef<NormalizedMarketItem[]>([]);
+  const prevDataRef = useRef<Map<string, NormalizedMarketItem>>(new Map());
+  const quotesRef = useRef<Map<string, MarketQuote>>(new Map());
   const hiddenSetRef = useRef<Set<string>>(new Set(hiddenSymbols));
 
   useEffect(() => {
     hiddenSetRef.current = new Set(hiddenSymbols);
+    for (const symbol of quotesRef.current.keys()) {
+      if (hiddenSetRef.current.has(symbol)) {
+        quotesRef.current.delete(symbol);
+        prevDataRef.current.delete(symbol);
+      }
+    }
+    setQuotes(Array.from(quotesRef.current.values()));
   }, [hiddenSymbols]);
 
   useEffect(() => {
@@ -44,7 +52,7 @@ export function useMarketQuotes(options: UseMarketQuotesOptions = {}) {
       if (!filteredPayload.length) return;
 
       const updatedData: MarketQuote[] = filteredPayload.map((item) => {
-        const prevItem = prevDataRef.current.find((previous) => previous.symbol === item.symbol);
+        const prevItem = prevDataRef.current.get(item.symbol);
 
         let direction: "up" | "down" | "neutral";
         if (prevItem) {
@@ -58,8 +66,14 @@ export function useMarketQuotes(options: UseMarketQuotesOptions = {}) {
         return { ...item, direction };
       });
 
-      setQuotes(updatedData);
-      prevDataRef.current = filteredPayload;
+      for (let i = 0; i < filteredPayload.length; i++) {
+        const item = filteredPayload[i];
+        const nextQuote = updatedData[i];
+        quotesRef.current.set(item.symbol, nextQuote);
+        prevDataRef.current.set(item.symbol, item);
+      }
+
+      setQuotes(Array.from(quotesRef.current.values()));
       setErrorMessage("");
     };
 
@@ -119,4 +133,3 @@ export function useMarketQuotes(options: UseMarketQuotesOptions = {}) {
 
   return { quotes, errorMessage };
 }
-

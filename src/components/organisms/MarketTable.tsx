@@ -1,6 +1,7 @@
 import { useTranslation } from "next-i18next";
 import Header1 from "../moleculs/Header1";
 import { useMarketQuotes } from "@/hooks/useMarketQuotes";
+import { formatPercent, formatQuoteNumber, normalizeSymbolBase } from "@/utils/marketFormat";
 
 type MarketTableProps = {
   showHeader?: boolean;
@@ -12,7 +13,7 @@ export default function MarketTable({ showHeader = true, className, symbols }: M
   const { t } = useTranslation("market");
   const { quotes, errorMessage } = useMarketQuotes();
 
-  const normalizeSymbol = (symbol: string) => symbol.split("_")[0]?.toUpperCase?.() ?? symbol.toUpperCase();
+  const normalizeSymbol = normalizeSymbolBase;
 
   const symbolOrder = symbols?.length
     ? new Map<string, number>(symbols.map((s, i) => [normalizeSymbol(s), i]))
@@ -24,22 +25,7 @@ export default function MarketTable({ showHeader = true, className, symbols }: M
         .sort((a, b) => (symbolOrder.get(normalizeSymbol(a.symbol)) ?? 0) - (symbolOrder.get(normalizeSymbol(b.symbol)) ?? 0))
     : quotes;
 
-  const formatPrice = (symbol: string, price: number): string => {
-    if (symbol.includes("IDR")) return price.toLocaleString("id-ID", { maximumFractionDigits: 0 });
-    if (symbol.includes("BTC")) return price.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    return price.toFixed(2);
-  };
-
-  const formatMaybePrice = (symbol: string, price?: number): string => {
-    if (typeof price !== "number" || !Number.isFinite(price) || price === 0) return "-";
-    return formatPrice(symbol, price);
-  };
-
-  const formatPercent = (percent?: number): string => {
-    if (typeof percent !== "number" || !Number.isFinite(percent)) return "-";
-    const sign = percent > 0 ? "+" : "";
-    return `${sign}${percent.toFixed(2)}%`;
-  };
+  const formatMaybePrice = (symbol: string, price?: number): string => formatQuoteNumber(symbol, price);
 
   const getDirectionStyles = (direction?: "up" | "down" | "neutral") => {
     if (direction === "up") return { text: "text-green-700", icon: "fa-arrow-trend-up" };
@@ -107,7 +93,7 @@ export default function MarketTable({ showHeader = true, className, symbols }: M
                   >
                     <span className="inline-flex items-center justify-end gap-2">
                       <i className={`fa-solid ${getDirectionStyles(item.direction).icon}`} aria-hidden="true" />
-                      <span>{formatPercent(item.percentChange)}</span>
+                      <span>{formatPercent(item.percentChange, 2)}</span>
                     </span>
                   </td>
                 </tr>

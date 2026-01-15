@@ -2,6 +2,7 @@ import { useTranslation } from "next-i18next";
 import MarketCard from "../moleculs/MarketCard";
 import Header1 from "../moleculs/Header1";
 import { useMarketQuotes } from "@/hooks/useMarketQuotes";
+import { formatPercent, formatQuoteNumber, normalizeSymbolBase } from "@/utils/marketFormat";
 
 type MarketProps = {
     showHeader?: boolean;
@@ -19,7 +20,7 @@ export default function Market({ showHeader = true, className }: MarketProps) {
     const { t } = useTranslation('market');
     const { quotes: marketData, errorMessage } = useMarketQuotes();
 
-    const normalizeSymbol = (symbol: string) => symbol.split("_")[0]?.toUpperCase?.() ?? symbol.toUpperCase();
+    const normalizeSymbol = normalizeSymbolBase;
 
     const featuredGroups: Array<{ name: string; candidates: string[] }> = [
         { name: "Gold", candidates: ["XUL10"] },
@@ -48,17 +49,7 @@ export default function Market({ showHeader = true, className }: MarketProps) {
         })
         .filter((item): item is MarketItem & { __displayName: string } => item !== null);
 
-    const formatPrice = (symbol: string, price: number): string => {
-        if (symbol.includes('IDR')) return price.toLocaleString('id-ID', { maximumFractionDigits: 0 });
-        if (symbol.includes('BTC')) return price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        return price.toFixed(2);
-    };
-
-    const formatPercent = (percent: number): string => {
-        const formatted = percent?.toFixed(2);
-        const sign = percent > 0 ? '+' : '';
-        return `${sign}${formatted}%`;
-    };
+    const formatPrice = (symbol: string, price: number): string => formatQuoteNumber(symbol, price);
 
     return (
         <div className={["w-full bg-[#f7e7e7] py-10 flex flex-col items-center space-y-4", className].filter(Boolean).join(" ")}>
@@ -84,7 +75,7 @@ export default function Market({ showHeader = true, className }: MarketProps) {
                                 key={index}
                                 symbol={item.__displayName}
                                 last={formatPrice(item.symbol, item.last)}
-                                percentChange={formatPercent(item.percentChange)}
+                                percentChange={formatPercent(item.percentChange, 2)}
                                 direction={item.direction || 'neutral'}
                             />
                         ))

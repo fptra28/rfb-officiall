@@ -12,6 +12,8 @@ export type NormalizedMarketItem = {
   close?: number;
   prevClose?: number;
   valueChange?: number;
+  serverTime?: string;
+  serverDateTime?: string;
 };
 
 const MARKET_ARRAY_KEYS = ["data", "result", "quotes", "payload", "items"];
@@ -42,6 +44,15 @@ const normalizeItem = (item: MarketPayloadItem): NormalizedMarketItem | null => 
   const ask = coerceNumber(item.ask ?? item.sell ?? item.aprice);
   const prevClose = coerceNumber(item.prevClose ?? item.prev_close ?? item.pclose);
   const close = coerceNumber(item.close ?? prevClose);
+  const serverTime = typeof item.serverTime === "string" ? item.serverTime : typeof item.server_time === "string" ? item.server_time : undefined;
+  const serverDateTime =
+    typeof item.serverDateTime === "string"
+      ? item.serverDateTime
+      : typeof item.server_datetime === "string"
+        ? item.server_datetime
+        : typeof item.serverDate === "string"
+          ? item.serverDate
+          : undefined;
 
   return {
     symbol,
@@ -54,7 +65,9 @@ const normalizeItem = (item: MarketPayloadItem): NormalizedMarketItem | null => 
     open: coerceNumber(item.open),
     close,
     prevClose,
-    valueChange: coerceNumber(item.valueChange),
+    valueChange: coerceNumber(item.valueChange ?? item.value_change ?? item.change ?? item.chg),
+    serverTime,
+    serverDateTime,
   };
 };
 
