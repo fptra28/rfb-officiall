@@ -13,6 +13,14 @@
   "medium": "Sedang",
   "low": "Rendah",
   "noData": "Tidak ada data yang tersedia",
+  "pdf": {
+    "download": "Download PDF",
+    "generating": "Membuat PDF...",
+    "title": "Kalender Ekonomi",
+    "filter": "Filter",
+    "generatedAt": "Dibuat",
+    "page": "Halaman"
+  },
   "filters": {
     "today": "Hari Ini",
     "thisWeek": "Minggu Ini",

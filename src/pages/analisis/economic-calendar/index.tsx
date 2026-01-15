@@ -48,6 +48,7 @@ export default function EconomicCalendar() {
   const [activeFilter, setActiveFilter] = useState<'today' | 'this-week' | 'previous-week' | 'next-week'>('today');
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
 
   const fetchData = async (filter: string = 'today') => {
     setIsLoading(true);
@@ -125,6 +126,189 @@ export default function EconomicCalendar() {
   // Cek apakah menampilkan kolom tanggal
   const showDateColumn = ['this-week', 'previous-week', 'next-week'].includes(activeFilter);
 
+  const getActiveFilterLabel = () => {
+    switch (activeFilter) {
+      case 'today':
+        return t('filters.today');
+      case 'this-week':
+        return t('filters.thisWeek');
+      case 'next-week':
+        return t('filters.nextWeek');
+      case 'previous-week':
+        return t('filters.previousWeek');
+      default:
+        return activeFilter;
+    }
+  };
+
+  const downloadPdf = async () => {
+    if (isLoading || error || dataKalender.length === 0) return;
+
+    setIsDownloadingPdf(true);
+    try {
+      const [{ jsPDF }, autoTableModule] = await Promise.all([
+        import('jspdf'),
+        import('jspdf-autotable'),
+      ]);
+
+      const autoTable = (autoTableModule as any).default ?? (autoTableModule as any);
+
+      const impactForPdf = (impact: string) => {
+        const count = (impact.match(/★/g) ?? []).length;
+        if (count === 1) return `* (${t('low', 'Low')})`;
+        if (count === 2) return `** (${t('medium', 'Medium')})`;
+        if (count >= 3) return `*** (${t('high', 'High')})`;
+        if ((impact.match(/\*/g) ?? []).length === 1) return `* (${t('low', 'Low')})`;
+        if ((impact.match(/\*/g) ?? []).length === 2) return `** (${t('medium', 'Medium')})`;
+        if ((impact.match(/\*/g) ?? []).length >= 3) return `*** (${t('high', 'High')})`;
+        return impact;
+      };
+
+      const loadPublicImageAsDataUrl = async (path: string) => {
+        const url = new URL(path, window.location.origin).toString();
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Failed to load image: ${path}`);
+        const blob = await res.blob();
+        return await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onerror = () => reject(new Error(`Failed to read image: ${path}`));
+          reader.onload = () => resolve(String(reader.result));
+          reader.readAsDataURL(blob);
+        });
+      };
+
+      const getImageInfo = async (dataUrl: string) => {
+        const format: 'PNG' | 'JPEG' =
+          dataUrl.startsWith('data:image/jpeg') || dataUrl.startsWith('data:image/jpg')
+            ? 'JPEG'
+            : 'PNG';
+
+        const dims = await new Promise<{ width: number; height: number }>((resolve, reject) => {
+          const img = new Image();
+          img.onload = () => resolve({ width: img.naturalWidth || img.width, height: img.naturalHeight || img.height });
+          img.onerror = () => reject(new Error('Failed to decode image'));
+          img.src = dataUrl;
+        });
+
+        return { dataUrl, format, ...dims };
+      };
+
+      let watermarkImage: { dataUrl: string; format: 'PNG' | 'JPEG'; width: number; height: number } | null = null;
+      try {
+        const dataUrl = await loadPublicImageAsDataUrl('/assets/rfb_logo (1).png');
+        watermarkImage = await getImageInfo(dataUrl);
+      } catch {
+        watermarkImage = null;
+      }
+
+      const doc = new jsPDF({
+        orientation: 'landscape',
+        unit: 'pt',
+        format: 'a4',
+      });
+
+      const now = new Date();
+      const locale = typeof window !== 'undefined' ? navigator.language : 'id-ID';
+      const generatedAt = now.toLocaleString(locale);
+
+      const title = t('pdf.title', 'Kalender Ekonomi');
+      const subTitle = `${t('pdf.filter', 'Filter')}: ${getActiveFilterLabel()} • ${t('pdf.generatedAt', 'Dibuat')}: ${generatedAt}`;
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(16);
+      doc.text(title, 40, 40);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(10);
+      doc.text(subTitle, 40, 60);
+
+      const head = [
+        [
+          ...(showDateColumn ? [t('date', 'Tanggal')] : []),
+          t('time'),
+          t('country'),
+          t('impact'),
+          t('figures'),
+          t('previous'),
+          t('forecast'),
+          t('actual'),
+        ],
+      ];
+
+      const body = dataKalender.map((row) => {
+        const dt = parseDateTime(row.time);
+        return [
+          ...(showDateColumn ? [formatDate(dt.date)] : []),
+          dt.time,
+          row.country,
+          impactForPdf(row.impact),
+          row.figures,
+          row.previous,
+          row.forecast,
+          row.actual,
+        ];
+      });
+
+      autoTable(doc, {
+        startY: 80,
+        head,
+        body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak' },
+        headStyles: { fillColor: [22, 163, 74] },
+        columnStyles: {
+          ...(showDateColumn ? { 0: { cellWidth: 70 } } : {}),
+        },
+        didDrawPage: (data: any) => {
+          const pageSize = doc.internal.pageSize;
+          const pageWidth = pageSize.getWidth();
+          const pageHeight = pageSize.getHeight();
+
+          if (watermarkImage) {
+            const maxW = pageWidth * 0.42;
+            const maxH = pageHeight * 0.42;
+            const scale = Math.min(maxW / watermarkImage.width, maxH / watermarkImage.height);
+            const w = watermarkImage.width * scale;
+            const h = watermarkImage.height * scale;
+            const x = (pageWidth - w) / 2;
+            const y = (pageHeight - h) / 2;
+            try {
+              const GState = (doc as any).GState;
+              if (GState) {
+                doc.setGState(new GState({ opacity: 0.18 }));
+              }
+              doc.addImage(watermarkImage.dataUrl, watermarkImage.format, x, y, w, h, undefined, 'FAST');
+              if (GState) {
+                doc.setGState(new GState({ opacity: 1 }));
+              }
+            } catch {
+              try {
+                doc.addImage(watermarkImage.dataUrl, watermarkImage.format, x, y, w, h, undefined, 'FAST');
+              } catch {
+                // ignore watermark failures
+              }
+            }
+          }
+
+          doc.setFontSize(9);
+          doc.setTextColor(120);
+          doc.text(
+            `${t('pdf.page', 'Halaman')} ${doc.getNumberOfPages()}`,
+            pageWidth - 40,
+            pageHeight - 20,
+            { align: 'right' }
+          );
+          doc.setTextColor(0);
+        },
+      });
+
+      const pad2 = (n: number) => String(n).padStart(2, '0');
+      const timestamp = `${now.getFullYear()}${pad2(now.getMonth() + 1)}${pad2(now.getDate())}-${pad2(now.getHours())}${pad2(now.getMinutes())}`;
+      const safeFilter = activeFilter.replace(/[^a-z0-9-]/gi, '-');
+      doc.save(`economic-calendar-${safeFilter}-${timestamp}.pdf`);
+    } finally {
+      setIsDownloadingPdf(false);
+    }
+  };
+
   const openDetail = (event: CalendarEvent) => {
     setSelectedEvent(event);
     setIsDetailOpen(true);
@@ -163,7 +347,7 @@ export default function EconomicCalendar() {
           ) : (
             <div className="space-y-5">
               {/* Filter Button Section */}
-              <div className="flex flex-wrap items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-3 mb-6 justify-between">
                 <div className="flex flex-wrap gap-2">
                   {[
                     { key: 'today', label: t('filters.today') },
@@ -184,6 +368,21 @@ export default function EconomicCalendar() {
                     </button>
                   ))}
                 </div>
+
+                <button
+                  type="button"
+                  onClick={downloadPdf}
+                  disabled={isLoading || !!error || dataKalender.length === 0 || isDownloadingPdf}
+                  className={`px-4 py-2 rounded-md transition-all duration-200 text-sm font-medium whitespace-nowrap border ${
+                    isLoading || !!error || dataKalender.length === 0 || isDownloadingPdf
+                      ? 'bg-zinc-100 text-zinc-400 border-zinc-200 cursor-not-allowed'
+                      : 'bg-green-600 text-white border-green-600 hover:bg-green-700'
+                  }`}
+                  title={t('pdf.download', 'Download PDF')}
+                >
+                  <i className="fa-solid fa-file-arrow-down mr-2" aria-hidden="true"></i>
+                  {isDownloadingPdf ? t('pdf.generating', 'Membuat PDF...') : t('pdf.download', 'Download PDF')}
+                </button>
               </div>
 
               {/* Table */}

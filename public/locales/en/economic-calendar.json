@@ -13,6 +13,14 @@
   "medium": "Medium",
   "low": "Low",
   "noData": "No data available",
+  "pdf": {
+    "download": "Download PDF",
+    "generating": "Generating PDF...",
+    "title": "Economic Calendar",
+    "filter": "Filter",
+    "generatedAt": "Generated",
+    "page": "Page"
+  },
   "filters": {
     "today": "Today",
     "thisWeek": "This Week",
