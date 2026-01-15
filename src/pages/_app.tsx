@@ -7,26 +7,44 @@ import nextI18NextConfig from "../../next-i18next.config.js";
 import LoadingScreen from "@/components/organisms/LoadingScreen";
 
 function App({ Component, pageProps }: AppProps) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const handleStart = () => setLoading(true);
-    const handleStop = () => setLoading(false);
+    let showTimer: number | null = null;
+    let safetyTimer: number | null = null;
+
+    const clearTimers = () => {
+      if (showTimer !== null) {
+        window.clearTimeout(showTimer);
+        showTimer = null;
+      }
+      if (safetyTimer !== null) {
+        window.clearTimeout(safetyTimer);
+        safetyTimer = null;
+      }
+    };
+
+    const handleStart = () => {
+      clearTimers();
+      showTimer = window.setTimeout(() => setLoading(true), 150);
+      safetyTimer = window.setTimeout(() => setLoading(false), 8000);
+    };
+
+    const handleStop = () => {
+      clearTimers();
+      setLoading(false);
+    };
 
     router.events.on("routeChangeStart", handleStart);
     router.events.on("routeChangeComplete", handleStop);
     router.events.on("routeChangeError", handleStop);
 
-    const initialLoad = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
     return () => {
       router.events.off("routeChangeStart", handleStart);
       router.events.off("routeChangeComplete", handleStop);
       router.events.off("routeChangeError", handleStop);
-      clearTimeout(initialLoad);
+      clearTimers();
     };
   }, [router]);
 

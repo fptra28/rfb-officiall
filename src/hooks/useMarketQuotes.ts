@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { parseMarketWsMessage, NormalizedMarketItem } from "@/utils/marketWs";
-
-export type MarketQuote = NormalizedMarketItem & {
-  direction?: "up" | "down" | "neutral";
-};
+import { useMemo, useSyncExternalStore } from "react";
+import {
+  getMarketQuotesServerSnapshot,
+  getMarketQuotesSnapshot,
+  subscribeMarketQuotes,
+} from "@/utils/marketQuotesStore";
 
 type UseMarketQuotesOptions = {
   hiddenSymbols?: string[];
@@ -11,125 +11,17 @@ type UseMarketQuotesOptions = {
   reconnectDelayMs?: number;
 };
 
-const DEFAULT_WS_URL = "wss://wsprc.royalassetindo.co.id";
-
 export function useMarketQuotes(options: UseMarketQuotesOptions = {}) {
-  const { hiddenSymbols = ["XAG10_BBJ", "XAGF_BBJ"], wsUrl = DEFAULT_WS_URL, reconnectDelayMs = 3000 } = options;
+  const { hiddenSymbols = ["XAG10_BBJ", "XAGF_BBJ"] } = options;
 
-  const [quotes, setQuotes] = useState<MarketQuote[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string>("");
-  const prevDataRef = useRef<Map<string, NormalizedMarketItem>>(new Map());
-  const quotesRef = useRef<Map<string, MarketQuote>>(new Map());
-  const hiddenSetRef = useRef<Set<string>>(new Set(hiddenSymbols));
+  const state = useSyncExternalStore(
+    subscribeMarketQuotes,
+    getMarketQuotesSnapshot,
+    getMarketQuotesServerSnapshot
+  );
 
-  useEffect(() => {
-    hiddenSetRef.current = new Set(hiddenSymbols);
-    for (const symbol of quotesRef.current.keys()) {
-      if (hiddenSetRef.current.has(symbol)) {
-        quotesRef.current.delete(symbol);
-        prevDataRef.current.delete(symbol);
-      }
-    }
-    setQuotes(Array.from(quotesRef.current.values()));
-  }, [hiddenSymbols]);
+  const hiddenSet = useMemo(() => new Set(hiddenSymbols), [hiddenSymbols]);
+  const quotes = useMemo(() => state.quotes.filter((item) => !hiddenSet.has(item.symbol)), [hiddenSet, state.quotes]);
 
-  useEffect(() => {
-    let isActive = true;
-    let reconnectTimer: number | null = null;
-    let socket: WebSocket | null = null;
-
-    const clearReconnectTimer = () => {
-      if (reconnectTimer !== null) {
-        window.clearTimeout(reconnectTimer);
-        reconnectTimer = null;
-      }
-    };
-
-    const handlePayload = (payload: NormalizedMarketItem[]) => {
-      if (!payload.length || !isActive) return;
-
-      const filteredPayload = payload.filter((item) => !hiddenSetRef.current.has(item.symbol));
-      if (!filteredPayload.length) return;
-
-      const updatedData: MarketQuote[] = filteredPayload.map((item) => {
-        const prevItem = prevDataRef.current.get(item.symbol);
-
-        let direction: "up" | "down" | "neutral";
-        if (prevItem) {
-          if (item.last > prevItem.last) direction = "up";
-          else if (item.last < prevItem.last) direction = "down";
-          else direction = item.percentChange === 0 ? "neutral" : item.percentChange > 0 ? "up" : "down";
-        } else {
-          direction = item.percentChange > 0 ? "up" : item.percentChange < 0 ? "down" : "neutral";
-        }
-
-        return { ...item, direction };
-      });
-
-      for (let i = 0; i < filteredPayload.length; i++) {
-        const item = filteredPayload[i];
-        const nextQuote = updatedData[i];
-        quotesRef.current.set(item.symbol, nextQuote);
-        prevDataRef.current.set(item.symbol, item);
-      }
-
-      setQuotes(Array.from(quotesRef.current.values()));
-      setErrorMessage("");
-    };
-
-    const handleMessageData = (raw: unknown) => {
-      const parsed = parseMarketWsMessage(raw);
-      handlePayload(parsed);
-    };
-
-    const connect = () => {
-      if (!isActive) return;
-      clearReconnectTimer();
-
-      socket = new WebSocket(wsUrl);
-
-      socket.onopen = () => {
-        if (!isActive) return;
-        setErrorMessage("");
-      };
-
-      socket.onmessage = (event) => {
-        if (typeof event.data === "string") {
-          handleMessageData(event.data);
-          return;
-        }
-
-        if (event.data instanceof Blob) {
-          event.data.text().then(handleMessageData).catch(() => {});
-          return;
-        }
-
-        if (event.data instanceof ArrayBuffer) {
-          const text = new TextDecoder().decode(event.data);
-          handleMessageData(text);
-        }
-      };
-
-      socket.onerror = () => {
-        if (!isActive) return;
-        setErrorMessage("Gagal menghubungkan live quotes");
-      };
-
-      socket.onclose = () => {
-        if (!isActive) return;
-        setErrorMessage("Koneksi live quotes terputus");
-        reconnectTimer = window.setTimeout(connect, reconnectDelayMs);
-      };
-    };
-
-    connect();
-
-    return () => {
-      isActive = false;
-      clearReconnectTimer();
-      socket?.close();
-    };
-  }, [reconnectDelayMs, wsUrl]);
-
-  return { quotes, errorMessage };
+  return { quotes, errorMessage: state.errorMessage };
 }
