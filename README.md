@@ -24,6 +24,10 @@ This project initializes Firebase Analytics on the client (via `src/lib/firebase
 cp .env.example .env.local
 ```
 
+Important: `NEXT_PUBLIC_*` env vars are embedded at build time in Next.js. On VPS/CI, make sure you set the env vars before running `npm run build`, then restart `npm start`/PM2 after changes.
+
+If you deploy with Docker, pass `NEXT_PUBLIC_*` via build args (see `docker-compose.yml`) so the client bundle contains your Firebase config.
+
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
