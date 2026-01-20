@@ -12,7 +12,8 @@ function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    initFirebaseAnalytics();
+    initFirebaseAnalytics().then(() => trackPageView(router.asPath));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

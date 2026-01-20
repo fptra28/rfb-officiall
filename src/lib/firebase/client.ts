@@ -57,13 +57,14 @@ let analyticsPromise: Promise<Analytics | null> | null = null;
 export const initFirebaseAnalytics = async (): Promise<Analytics | null> => {
   if (typeof window === "undefined") return null;
 
-  const enabled =
-    process.env.NEXT_PUBLIC_FIREBASE_ANALYTICS_ENABLED === "true" ||
-    process.env.NODE_ENV === "production";
-  if (!enabled) return null;
-
   const app = getFirebaseApp();
   if (!app) return null;
+
+  const config = getFirebaseConfig();
+  if (!config?.measurementId) return null;
+
+  const enabled = process.env.NEXT_PUBLIC_FIREBASE_ANALYTICS_ENABLED !== "false";
+  if (!enabled) return null;
 
   if (!analyticsPromise) {
     analyticsPromise = (async () => {
@@ -88,9 +89,13 @@ export const trackPageView = async (url: string): Promise<void> => {
   if (!analytics) return;
 
   const { logEvent } = await import("firebase/analytics");
+  const debugMode =
+    process.env.NEXT_PUBLIC_FIREBASE_ANALYTICS_DEBUG === "true" ||
+    process.env.NODE_ENV !== "production";
   logEvent(analytics, "page_view", {
     page_path: url,
     page_location: window.location.href,
     page_title: document.title,
+    debug_mode: debugMode ? 1 : undefined,
   });
 };
