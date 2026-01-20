@@ -16,6 +16,14 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Firebase Analytics
+
+This project initializes Firebase Analytics on the client (via `src/lib/firebase/client.ts`). To enable it, copy `.env.example` to `.env.local` and fill in your Firebase Web App config:
+
+```bash
+cp .env.example .env.local
+```
+
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
 [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.

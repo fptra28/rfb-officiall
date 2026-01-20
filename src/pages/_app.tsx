@@ -5,10 +5,15 @@ import { useRouter } from "next/router";
 import { appWithTranslation } from "next-i18next";
 import nextI18NextConfig from "../../next-i18next.config.js";
 import LoadingScreen from "@/components/organisms/LoadingScreen";
+import { initFirebaseAnalytics, trackPageView } from "@/lib/firebase/client";
 
 function App({ Component, pageProps }: AppProps) {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    initFirebaseAnalytics();
+  }, []);
 
   useEffect(() => {
     let showTimer: number | null = null;
@@ -36,13 +41,18 @@ function App({ Component, pageProps }: AppProps) {
       setLoading(false);
     };
 
+    const handleComplete = (url: string) => {
+      handleStop();
+      trackPageView(url);
+    };
+
     router.events.on("routeChangeStart", handleStart);
-    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeComplete", handleComplete);
     router.events.on("routeChangeError", handleStop);
 
     return () => {
       router.events.off("routeChangeStart", handleStart);
-      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeComplete", handleComplete);
       router.events.off("routeChangeError", handleStop);
       clearTimers();
     };
