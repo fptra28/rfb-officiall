@@ -1,0 +1,129 @@
+{
+  "notFound": "Materi edukasi tidak ditemukan.",
+  "pages": {
+    "mekanisme-perdagangan": {
+      "title": "Mekanisme Perdagangan",
+      "intro": "Ringkasan alur dasar perdagangan berjangka: mulai dari memilih produk, memasang order, hingga pengelolaan risiko melalui margin, leverage, dan manajemen posisi.",
+      "sections": [
+        {
+          "title": "Alur Umum",
+          "bullets": [
+            "Pilih produk/instrumen sesuai profil risiko dan tujuan.",
+            "Tentukan arah transaksi (buy/long atau sell/short).",
+            "Tentukan ukuran kontrak/lot dan rencana entry–exit.",
+            "Pasang order (market/limit/stop) melalui platform.",
+            "Pantau posisi, margin, dan kondisi pasar; lakukan penyesuaian bila diperlukan."
+          ]
+        },
+        {
+          "title": "Margin & Leverage",
+          "paragraphs": [
+            "Margin adalah dana jaminan untuk membuka posisi. Leverage memungkinkan eksposur lebih besar dibanding dana yang disetor, sehingga potensi keuntungan dan kerugian bisa meningkat."
+          ],
+          "bullets": [
+            "Pastikan memahami kebutuhan margin awal dan margin pemeliharaan.",
+            "Hindari penggunaan leverage berlebihan; sesuaikan dengan toleransi risiko.",
+            "Gunakan stop loss dan target profit untuk membatasi risiko."
+          ]
+        },
+        {
+          "title": "Manajemen Risiko",
+          "bullets": [
+            "Gunakan ukuran posisi yang terukur (position sizing).",
+            "Diversifikasi dan hindari konsentrasi pada satu instrumen saja.",
+            "Perhatikan jadwal rilis berita berdampak tinggi (mis. suku bunga, inflasi, NFP).",
+            "Evaluasi performa trading secara berkala (jurnal trading)."
+          ]
+        }
+      ]
+    },
+    "simbol-indeks": {
+      "title": "Simbol Indeks",
+      "intro": "Simbol (kode) digunakan untuk mengidentifikasi instrumen secara unik di sistem perdagangan. Memahami simbol membantu memastikan Anda bertransaksi pada produk yang tepat (mis. indeks saham, forex, atau komoditas).",
+      "sections": [
+        {
+          "title": "Contoh Simbol Indeks",
+          "bullets": [
+            "HKK50_BBJ / HKK5U_BBJ: kontrak berbasis indeks Hong Kong (Hang Seng).",
+            "JPK50_BBJ / JPK5U_BBJ: kontrak berbasis indeks Jepang (Nikkei)."
+          ]
+        },
+        {
+          "title": "Cara Membaca Kode",
+          "bullets": [
+            "Bagian depan biasanya menunjukkan underlying (mis. HKK50, JPK50).",
+            "Akhiran seperti _BBJ mengindikasikan penandaan internal/produk di sistem.",
+            "Varian angka/huruf dapat membedakan ukuran kontrak atau seri kontrak."
+          ]
+        },
+        {
+          "title": "Tips",
+          "bullets": [
+            "Selalu cek spesifikasi kontrak: nilai per poin, spread/biaya, dan jam perdagangan.",
+            "Pastikan memilih simbol yang sesuai dengan tipe akun/produk yang digunakan."
+          ]
+        }
+      ]
+    },
+    "loco-london-gold": {
+      "title": "Loco London Gold",
+      "intro": "Loco London Gold adalah istilah pasar untuk transaksi emas yang diselesaikan (settlement) di London. Harga spot emas internasional sering mengacu pada standar ini dan umum diperdagangkan sebagai XAU/USD.",
+      "sections": [
+        {
+          "title": "Apa Artinya?",
+          "bullets": [
+            "“Loco London” mengacu pada lokasi penyelesaian di London bullion market.",
+            "Biasanya berbentuk emas batangan (good delivery) dalam sistem kliring London.",
+            "Harga menjadi referensi global untuk pasar emas spot."
+          ]
+        },
+        {
+          "title": "Faktor Penggerak Harga",
+          "bullets": [
+            "Nilai tukar USD dan kebijakan suku bunga (The Fed).",
+            "Inflasi dan ekspektasi inflasi.",
+            "Sentimen risiko (risk-on/risk-off) dan geopolitik.",
+            "Permintaan fisik, ETF, dan cadangan bank sentral."
+          ]
+        },
+        {
+          "title": "Catatan Risiko",
+          "bullets": [
+            "Emas bisa volatil saat rilis data ekonomi besar.",
+            "Perhatikan pengaturan leverage dan gunakan manajemen risiko."
+          ]
+        }
+      ]
+    },
+    "summer-winter": {
+      "title": "Summer & Winter",
+      "intro": "Pada beberapa periode, jam perdagangan bisa bergeser karena Daylight Saving Time (DST) di negara tertentu. Kondisi ini sering disebut “Summer time” dan “Winter time”.",
+      "sections": [
+        {
+          "title": "Kenapa Jam Bisa Berubah?",
+          "bullets": [
+            "Saat DST aktif (summer time), jam lokal di negara terkait maju 1 jam.",
+            "Saat DST berakhir (winter time), jam kembali normal.",
+            "Akibatnya, pembukaan/penutupan sesi pasar global bisa terlihat bergeser di waktu Indonesia."
+          ]
+        },
+        {
+          "title": "Dampaknya ke Trading",
+          "bullets": [
+            "Perubahan jam sesi dapat memengaruhi volatilitas pada jam-jam tertentu.",
+            "Jadwal rilis berita ekonomi biasanya mengikuti jam setempat; pastikan menyesuaikan.",
+            "Atur ulang alarm, jadwal analisis, dan rencana eksekusi."
+          ]
+        },
+        {
+          "title": "Tips Praktis",
+          "bullets": [
+            "Cek kalender ekonomi dan jam pasar terbaru pada awal minggu.",
+            "Gunakan pengingat untuk periode transisi DST (biasanya Maret/November)."
+          ]
+        }
+      ]
+    }
+  }
+}
+

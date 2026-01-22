@@ -19,14 +19,14 @@
   "kantorPusat": {
     "judul": "Head Office",
     "jakarta": "Jakarta",
-    "alamat1": "AXA Tower Kuningan City 23rd, 25th, 30th & 35th Floor",
-    "alamat2": "Jl. Prof. DR. Satrio Kav. 18\nKuningan Setiabudi, Jakarta 12940",
+    "alamat1": "Axa Tower, Jl. Prof. DR Satrio Kav. 18 Floors 30, 35, 23 and 25,",
+    "alamat2": "Kuningan Setiabudi, South Jakarta, DKI Jakarta 12940",
     "telepon": "Phone",
     "fax": "Fax",
     "email": "Email"
   },
   "tombol": {
-    "pengajuan": "ONLINE SUBMISSION",
+    "pengajuan": "ONLINE COMPLAINT",
     "keluhan": "ONLINE COMPLAINT"
   }
 }

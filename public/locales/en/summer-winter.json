@@ -1,0 +1,180 @@
+{
+  "pageTitle": "Summer & Winter",
+  "tables": {
+    "columns": ["Local Date", "Local Time", "DST", "UTC Offset", "Time Zone"]
+  },
+  "uk": {
+    "title": "UK Time / British Time",
+    "p1": "UK Time covers England, Wales, Scotland, and Northern Ireland.",
+    "p2": "The UK is in the Western European time zone. Like many European countries, Daylight Saving Time (summer time) is applied in the UK, moving clocks forward by one hour (GMT + 1). After summer time ends, clocks move back one hour to Western European Time (WET) or GMT.",
+    "cards": {
+      "start": {
+        "title": "Summer Time Starts (25 Mar)",
+        "description": "When local standard time reaches Sunday, 25 March 2012, 01:00:00, it is advanced by 1 hour to Sunday, 25 March 2012, 02:00:00 local daylight time."
+      },
+      "end": {
+        "title": "Summer Time Ends (28 Oct)",
+        "description": "When local daylight time reaches Sunday, 28 October 2012, 02:00:00, clocks are set back by 1 hour to Sunday, 28 October 2012, 01:00:00 local standard time."
+      }
+    },
+    "forward": {
+      "title": "Seconds before and after the forward shift",
+      "rows": [
+        {
+          "localDate": "Sunday, 25 March 2012",
+          "localTime": "00:59:59",
+          "dst": "No",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        },
+        {
+          "localDate": "01:00:00 → 02:00:00",
+          "localTime": "+1h",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        },
+        {
+          "localDate": "Sunday, 25 March 2012",
+          "localTime": "02:00:01",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        }
+      ]
+    },
+    "backward": {
+      "title": "Seconds before and after the backward shift",
+      "rows": [
+        {
+          "localDate": "Sunday, 28 October 2012",
+          "localTime": "00:59:59",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        },
+        {
+          "localDate": "02:00:00 → 01:00:00",
+          "localTime": "-1h",
+          "dst": "0h",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        },
+        {
+          "localDate": "Sunday, 28 October 2012",
+          "localTime": "01:00:01",
+          "dst": "No",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        }
+      ]
+    },
+    "formula": {
+      "title": "Europe Summer Time Formula",
+      "forwardLabel": "Forward:",
+      "forward": "Start: Sunday 31 - (((SS * y) / 4) + 4 mod 7); March at 01:00 GMT",
+      "backwardLabel": "Backward:",
+      "backward": "End: Sunday 31 - (((SS * y) / 4) + 1 mod 7); October at 01:00 GMT",
+      "note": "Note: The formula is valid until 2099. y is the year."
+    },
+    "schedule": {
+      "title": "BST Schedule (2010-2015)",
+      "headers": ["Year", "BST Start", "BST End"],
+      "rows": [
+        { "year": "2010", "start": "Sunday, 28 March 2010", "end": "Sunday, 31 October 2010" },
+        { "year": "2011", "start": "Sunday, 27 March 2011", "end": "Sunday, 30 October 2011" },
+        { "year": "2012", "start": "Sunday, 25 March 2012", "end": "Sunday, 28 October 2012" },
+        { "year": "2013", "start": "Sunday, 31 March 2013", "end": "Sunday, 27 October 2013" },
+        { "year": "2014", "start": "Sunday, 30 March 2014", "end": "Sunday, 26 October 2014" },
+        { "year": "2015", "start": "Sunday, 29 March 2015", "end": "Sunday, 25 October 2015" }
+      ]
+    }
+  },
+  "us": {
+    "title": "US & Canada Time",
+    "p1": "US & Canada — Eastern Standard Time (EST) / Eastern Daylight Time (EDT)",
+    "p2": "In the US and Canada, this time zone is generally referred to as Eastern Time (ET). Specifically, it is Eastern Standard Time (EST) when standard time is observed (winter), and Eastern Daylight Time (EDT) when daylight saving time is observed (spring, summer, fall).",
+    "cards": {
+      "start": {
+        "title": "Summer Time Starts (2nd Sunday in March)",
+        "description": "When local standard time reaches Sunday, 11 March 2012, 02:00:00, it is advanced by 1 hour to Sunday, 11 March 2012, 03:00:00 local daylight time."
+      },
+      "end": {
+        "title": "Summer Time Ends (1st Sunday in November)",
+        "description": "When local daylight time reaches Sunday, 4 November 2012, 02:00:00, clocks are set back by 1 hour to Sunday, 4 November 2012, 01:00:00 local standard time."
+      }
+    },
+    "forward": {
+      "title": "Seconds before and after the forward shift",
+      "rows": [
+        {
+          "localDate": "Sunday, 11 March 2012",
+          "localTime": "01:59:59",
+          "dst": "No",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        },
+        {
+          "localDate": "02:00:00 → 03:00:00",
+          "localTime": "+1h",
+          "dst": "Yes",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        },
+        {
+          "localDate": "Sunday, 11 March 2012",
+          "localTime": "03:00:01",
+          "dst": "Yes",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        }
+      ]
+    },
+    "backward": {
+      "title": "Seconds before and after the backward shift",
+      "rows": [
+        {
+          "localDate": "Sunday, 4 November 2012",
+          "localTime": "00:59:59",
+          "dst": "Yes",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        },
+        {
+          "localDate": "02:00:00 → 01:00:00",
+          "localTime": "-1h",
+          "dst": "No",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        },
+        {
+          "localDate": "Sunday, 4 November 2012",
+          "localTime": "01:00:01",
+          "dst": "No",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        }
+      ]
+    },
+    "formula": {
+      "title": "US/Canada Time Change Rules",
+      "forwardLabel": "Forward:",
+      "forward": "Start: 2nd Sunday in March at 02:00 local time",
+      "backwardLabel": "Backward:",
+      "backward": "End: 1st Sunday in November at 02:00 local time"
+    },
+    "schedule": {
+      "title": "Daylight Saving Schedule (2010-2015)",
+      "headers": ["Year", "DST Start", "DST End"],
+      "rows": [
+        { "year": "2010", "start": "Sunday, 14 March 2010", "end": "Sunday, 7 November 2010" },
+        { "year": "2011", "start": "Sunday, 13 March 2011", "end": "Sunday, 6 November 2011" },
+        { "year": "2012", "start": "Sunday, 11 March 2012", "end": "Sunday, 4 November 2012" },
+        { "year": "2013", "start": "Sunday, 10 March 2013", "end": "Sunday, 3 November 2013" },
+        { "year": "2014", "start": "Sunday, 9 March 2014", "end": "Sunday, 2 November 2014" },
+        { "year": "2015", "start": "Sunday, 8 March 2015", "end": "Sunday, 1 November 2015" }
+      ]
+    }
+  }
+}
+

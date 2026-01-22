@@ -90,6 +90,10 @@ export default function RegistrationFlow() {
             <p className="font-semibold">{t("bank_accounts.artha")}</p>
             <p>{t("bank_accounts.idr")}: 107 – 996 – 3271</p>
           </div>
+          <div>
+            <p className="font-semibold">{t("bank_accounts.bri")}</p>
+            <p>{t("bank_accounts.idr")}: 038201001512303</p>
+          </div>
         </div>
       ),
     },

@@ -46,9 +46,10 @@
     "education": {
       "label": "Education",
       "submenu": {
-        "tutorials": "Tutorials",
-        "seminars": "Seminars",
-        "glossary": "Glossary"
+        "tradingMechanism": "Trading Mechanism",
+        "indexSymbols": "Index Symbols",
+        "locoLondonGold": "Loco London Gold",
+        "summerWinter": "Summer & Winter"
       }
     },
     "prosedur": "Prosedur",

@@ -1,0 +1,32 @@
+{
+  "pageTitle": "Mekanisme Perdagangan",
+  "cards": {
+    "jfx": {
+      "title": "Multilateral (JFX)",
+      "description": "Mekanisme transaksi antara banyak pihak dengan sistem tawar-menawar terbuka di bursa. Bertujuan untuk pembentukan harga (price discovery), lindung nilai (hedging), dan dapat melibatkan serah terima fisik komoditi."
+    },
+    "spa": {
+      "title": "Bilateral (SPA)",
+      "description": "Transaksi antara dua pihak di luar bursa (OTC). Dikenal sebagai Sistem Perdagangan Alternatif (SPA), diselenggarakan murni untuk tujuan spekulasi dengan penyelesaian tunai."
+    }
+  },
+  "comparison": {
+    "title": "Tabel Perbandingan",
+    "columns": {
+      "multilateral": "MULTILATERAL",
+      "bilateral": "BILATERAL"
+    },
+    "rows": [
+      { "multilateral": "Dalam bursa", "bilateral": "Luar bursa (SPA)" },
+      { "multilateral": "Aturan bursa", "bilateral": "Aturan penyelenggara SPA" },
+      { "multilateral": "Sistem bursa (JAFETS, J-Trader)", "bilateral": "Sistem penyelenggara" },
+      { "multilateral": "Lawan tidak tetap", "bilateral": "Lawan tetap" },
+      { "multilateral": "Umumnya Order Driven", "bilateral": "Semuanya Quote Driven" },
+      { "multilateral": "Bisa tidak ada harga", "bilateral": "Pasti ada harga" },
+      { "multilateral": "Bisa antri", "bilateral": "Harus makan harga yang ada" },
+      { "multilateral": "Harga sama untuk satu kontrak", "bilateral": "Spread berbeda-beda" },
+      { "multilateral": "Bursa netral", "bilateral": "Motivasi untung" }
+    ]
+  }
+}
+

@@ -110,7 +110,6 @@ export default function HubungiKami() {
                         <h3 className="text-2xl font-bold my-6">{t('kantorPusat.judul')}</h3>
                         <div className="">
                             <h5 className="text-lg uppercase font-medium">{t('kantorPusat.jakarta')}</h5>
-                            <p className="font-semibold">{t('mingguLibur')}</p>
                             <p className="whitespace-pre-line">{t('kantorPusat.alamat1')}</p>
                             <p className="whitespace-pre-line">{t('kantorPusat.alamat2')}</p>
                             <p><strong>{t('kantorPusat.telepon')}:</strong> (021) 30056300, <strong>{t('kantorPusat.fax')}:</strong> (021) 30056200</p>
@@ -120,10 +119,14 @@ export default function HubungiKami() {
                         <hr className="border-zinc-300" />
 
                         <div className="flex flex-col gap-3">
-                            <a href="https://pengaduan.bappebti.go.id/" className="uppercase font-bold text-lg md:text-xl text-green-500 hover:text-green-600">{t('tombol.pengajuan')}</a>
+                            <a href="https://penggaduan.bappebti.go.id/" className="uppercase font-bold text-lg md:text-xl text-green-500 hover:text-green-600">{t('tombol.pengajuan')}</a>
                             <div className="w-full border-t border-dashed border-gray-400 my-2"></div>
-                            <a href="mailto:corporate@rifan-financindo-berjangka.co.id" className="uppercase font-bold text-lg md:text-xl text-green-500 hover:text-green-600">{t('tombol.keluhan')}</a>
-                            <div className="w-full border-t border-dashed border-gray-400 my-2"></div>
+                            <a
+                                href="mailto:corporate@rifan-financindo-berjangka.co.id"
+                                className="hidden uppercase font-bold text-lg md:text-xl text-green-500 hover:text-green-600"
+                            >
+                                {t('tombol.keluhan')}
+                            </a>
                         </div>
 
                         <div className="space-y-4">

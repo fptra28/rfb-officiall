@@ -1,0 +1,51 @@
+{
+  "pageTitle": "Simbol Indeks",
+  "indexSymbols": {
+    "title": "Daftar Simbol Indeks",
+    "subtitle": "Berikut contoh simbol indeks yang umum digunakan pada platform perdagangan.",
+    "items": [
+      { "code": "HSI", "name": "Hang Seng Index (Hong Kong)" },
+      { "code": "HK50", "name": "Hang Seng 50 (Hong Kong)" },
+      { "code": "NIK", "name": "Nikkei 225 (Jepang)" },
+      { "code": "JP225", "name": "Nikkei 225 (Jepang)" },
+      { "code": "US30", "name": "Dow Jones Industrial Average (AS)" },
+      { "code": "US500", "name": "S&P 500 (AS)" },
+      { "code": "NAS100", "name": "NASDAQ 100 (AS)" },
+      { "code": "DAX", "name": "DAX 40 (Jerman)" },
+      { "code": "GER40", "name": "Germany 40 (Jerman)" },
+      { "code": "UK100", "name": "FTSE 100 (Inggris)" }
+    ]
+  },
+  "contractMonths": {
+    "title": "Simbol Bulan Kontrak",
+    "groups": [
+      {
+        "title": "Hang Seng Futures",
+        "months": [
+          { "code": "F", "month": "Januari" },
+          { "code": "G", "month": "Februari" },
+          { "code": "H", "month": "Maret" },
+          { "code": "J", "month": "April" },
+          { "code": "K", "month": "Mei" },
+          { "code": "M", "month": "Juni" },
+          { "code": "N", "month": "Juli" },
+          { "code": "Q", "month": "Agustus" },
+          { "code": "U", "month": "September" },
+          { "code": "V", "month": "Oktober" },
+          { "code": "X", "month": "November" },
+          { "code": "Z", "month": "Desember" }
+        ]
+      },
+      {
+        "title": "Nikkei 225 Futures",
+        "months": [
+          { "code": "H", "month": "Maret" },
+          { "code": "M", "month": "Juni" },
+          { "code": "U", "month": "September" },
+          { "code": "Z", "month": "Desember" }
+        ]
+      }
+    ]
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "pageTitle": "Trading Mechanism",
+  "cards": {
+    "jfx": {
+      "title": "Multilateral (JFX)",
+      "description": "A multi-party trading mechanism with an open negotiation (order matching) system on an exchange. It supports price discovery, hedging, and may involve physical delivery of commodities."
+    },
+    "spa": {
+      "title": "Bilateral (SPA)",
+      "description": "A two-party transaction conducted off-exchange (OTC). Known as the Alternative Trading System (SPA), it is organized primarily for speculation with cash settlement."
+    }
+  },
+  "comparison": {
+    "title": "Comparison Table",
+    "columns": {
+      "multilateral": "MULTILATERAL",
+      "bilateral": "BILATERAL"
+    },
+    "rows": [
+      { "multilateral": "On-exchange", "bilateral": "Off-exchange (SPA)" },
+      { "multilateral": "Exchange rules", "bilateral": "SPA organizer rules" },
+      { "multilateral": "Exchange system (JAFETS, J-Trader)", "bilateral": "Organizer system" },
+      { "multilateral": "Counterparty not fixed", "bilateral": "Fixed counterparty" },
+      { "multilateral": "Generally order-driven", "bilateral": "Quote-driven" },
+      { "multilateral": "Prices may be unavailable", "bilateral": "Prices are always available" },
+      { "multilateral": "Orders can queue", "bilateral": "Must take the available price" },
+      { "multilateral": "Same price for a contract", "bilateral": "Spreads can vary" },
+      { "multilateral": "Neutral exchange", "bilateral": "Profit-motivated" }
+    ]
+  }
+}
+

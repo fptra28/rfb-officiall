@@ -26,13 +26,18 @@ export const getStaticProps = async ({ locale = 'id' }: GetStaticPropsContext) =
 });
 
 export async function getStaticPaths() {
-  // Pre-render all paths at build time
-  const kategoriList = await getKategoriWakilPialang();
-  const paths = kategoriList.map((kategori: KategoriWakilPialang) => ({
-    params: { slug: kategori.slug },
-  }));
+  // Avoid hard build-time dependency on external API/DNS.
+  // Pages will be generated on-demand via `fallback: 'blocking'`.
+  try {
+    const kategoriList = await getKategoriWakilPialang();
+    const paths = kategoriList.map((kategori: KategoriWakilPialang) => ({
+      params: { slug: kategori.slug },
+    }));
 
-  return { paths, fallback: 'blocking' };
+    return { paths, fallback: "blocking" };
+  } catch {
+    return { paths: [], fallback: "blocking" };
+  }
 }
 
 export default function WakilPialangDetail() {

@@ -1,0 +1,129 @@
+{
+  "notFound": "Education content not found.",
+  "pages": {
+    "mekanisme-perdagangan": {
+      "title": "Trading Mechanism",
+      "intro": "A quick overview of the core futures trading flow: selecting an instrument, placing orders, and managing risk through margin, leverage, and position management.",
+      "sections": [
+        {
+          "title": "General Flow",
+          "bullets": [
+            "Pick an instrument that matches your risk profile and goals.",
+            "Choose a direction (buy/long or sell/short).",
+            "Define contract/lot size and your entry–exit plan.",
+            "Place an order (market/limit/stop) via the trading platform.",
+            "Monitor positions, margin, and market conditions; adjust when needed."
+          ]
+        },
+        {
+          "title": "Margin & Leverage",
+          "paragraphs": [
+            "Margin is the collateral used to open a position. Leverage provides larger exposure relative to deposited funds, which can amplify both profits and losses."
+          ],
+          "bullets": [
+            "Understand initial margin and maintenance margin requirements.",
+            "Avoid excessive leverage; align it with your tolerance.",
+            "Use stop loss and take profit to control risk."
+          ]
+        },
+        {
+          "title": "Risk Management",
+          "bullets": [
+            "Use disciplined position sizing.",
+            "Diversify and avoid concentrating on a single instrument.",
+            "Watch high-impact news releases (e.g., rates, inflation, NFP).",
+            "Review performance regularly (trading journal)."
+          ]
+        }
+      ]
+    },
+    "simbol-indeks": {
+      "title": "Index Symbols",
+      "intro": "Symbols (codes) uniquely identify instruments in a trading system. Understanding symbols helps you ensure you trade the correct product (e.g., equity index, FX, or commodities).",
+      "sections": [
+        {
+          "title": "Example Index Symbols",
+          "bullets": [
+            "HKK50_BBJ / HKK5U_BBJ: contracts based on a Hong Kong index (Hang Seng).",
+            "JPK50_BBJ / JPK5U_BBJ: contracts based on a Japanese index (Nikkei)."
+          ]
+        },
+        {
+          "title": "How to Read the Code",
+          "bullets": [
+            "The prefix often indicates the underlying (e.g., HKK50, JPK50).",
+            "A suffix such as _BBJ can be an internal/product identifier in the system.",
+            "Number/letter variants can represent contract size or contract series."
+          ]
+        },
+        {
+          "title": "Tips",
+          "bullets": [
+            "Always check contract specs: point value, spread/fees, and trading hours.",
+            "Make sure the symbol matches your account/product type."
+          ]
+        }
+      ]
+    },
+    "loco-london-gold": {
+      "title": "Loco London Gold",
+      "intro": "Loco London Gold refers to gold transactions settled in London. International spot gold prices often reference this standard and are commonly quoted as XAU/USD.",
+      "sections": [
+        {
+          "title": "What Does It Mean?",
+          "bullets": [
+            "“Loco London” refers to settlement in the London bullion market.",
+            "Typically associated with good-delivery bars within London clearing.",
+            "Widely used as a global benchmark for spot gold."
+          ]
+        },
+        {
+          "title": "Key Price Drivers",
+          "bullets": [
+            "USD strength and interest-rate policy (the Fed).",
+            "Inflation and inflation expectations.",
+            "Risk sentiment (risk-on/risk-off) and geopolitics.",
+            "Physical demand, ETFs, and central bank reserves."
+          ]
+        },
+        {
+          "title": "Risk Notes",
+          "bullets": [
+            "Gold can be highly volatile during major economic releases.",
+            "Manage leverage and apply proper risk controls."
+          ]
+        }
+      ]
+    },
+    "summer-winter": {
+      "title": "Summer & Winter",
+      "intro": "During certain periods, trading hours may shift due to Daylight Saving Time (DST) in some countries. This is commonly referred to as “summer time” and “winter time”.",
+      "sections": [
+        {
+          "title": "Why Do Hours Change?",
+          "bullets": [
+            "When DST is active (summer time), local clocks move forward by 1 hour.",
+            "When DST ends (winter time), hours return to normal.",
+            "This can make global market sessions appear shifted relative to your local time."
+          ]
+        },
+        {
+          "title": "Impact on Trading",
+          "bullets": [
+            "Session changes may shift typical volatility windows.",
+            "Economic release schedules follow local time; adjust accordingly.",
+            "Update alerts, analysis routines, and execution plans."
+          ]
+        },
+        {
+          "title": "Practical Tips",
+          "bullets": [
+            "Check the latest economic calendar and market hours at the start of the week.",
+            "Set reminders for DST transition periods (often March/November)."
+          ]
+        }
+      ]
+    }
+  }
+}
+

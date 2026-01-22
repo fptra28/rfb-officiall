@@ -31,6 +31,7 @@ const NavBar = () => {
         { key: 'broker-representative', label: t('menu.profile.submenu.brokerRepresentative'), href: "/profil/wakil-pialang" },
         { key: 'general-info', label: t('menu.profile.submenu.generalInfo'), href: "/informasi/umum" },
         { key: 'general-video', label: t('menu.profile.submenu.generalVideo'), href: "/informasi/video-umum" },
+        { key: 'contact', label: t('menu.contact'), href: "/hubungi-kami" },
       ],
     },
     {
@@ -70,8 +71,17 @@ const NavBar = () => {
         { key: 'pivot-fibonacci', label: "Pivot & Fibonacci", href: "/analisis/pivot-fibonacci" },
       ],
     },
+    {
+      key: 'education',
+      label: t('menu.education.label'),
+      submenu: [
+        { key: 'mekanisme-perdagangan', label: t('menu.education.submenu.tradingMechanism'), href: "/edukasi/mekanisme-perdagangan" },
+        { key: 'simbol-indeks', label: t('menu.education.submenu.indexSymbols'), href: "/edukasi/simbol-indeks" },
+        { key: 'loco-london-gold', label: t('menu.education.submenu.locoLondonGold'), href: "/edukasi/loco-london-gold" },
+        { key: 'summer-winter', label: t('menu.education.submenu.summerWinter'), href: "/edukasi/summer-winter" },
+      ],
+    },
     { key: 'careers', label: t('menu.profile.submenu.careers'), href: "/careers" },
-    { key: 'contact', label: t('menu.contact'), href: "/hubungi-kami" },
   ];
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);

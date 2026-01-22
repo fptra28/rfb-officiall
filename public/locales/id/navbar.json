@@ -46,9 +46,10 @@
     "education": {
       "label": "Edukasi",
       "submenu": {
-        "tutorials": "Tutorial",
-        "seminars": "Seminar",
-        "glossary": "Glosarium"
+        "tradingMechanism": "Mekanisme Perdagangan",
+        "indexSymbols": "Simbol Indeks",
+        "locoLondonGold": "Loco London Gold",
+        "summerWinter": "Summer & Winter"
       }
     },
     "prosedur": "Prosedur",

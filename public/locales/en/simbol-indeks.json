@@ -1,0 +1,51 @@
+{
+  "pageTitle": "Index Symbols",
+  "indexSymbols": {
+    "title": "Index Symbol List",
+    "subtitle": "Examples of index symbols commonly used on trading platforms.",
+    "items": [
+      { "code": "HSI", "name": "Hang Seng Index (Hong Kong)" },
+      { "code": "HK50", "name": "Hang Seng 50 (Hong Kong)" },
+      { "code": "NIK", "name": "Nikkei 225 (Japan)" },
+      { "code": "JP225", "name": "Nikkei 225 (Japan)" },
+      { "code": "US30", "name": "Dow Jones Industrial Average (US)" },
+      { "code": "US500", "name": "S&P 500 (US)" },
+      { "code": "NAS100", "name": "NASDAQ 100 (US)" },
+      { "code": "DAX", "name": "DAX 40 (Germany)" },
+      { "code": "GER40", "name": "Germany 40 (Germany)" },
+      { "code": "UK100", "name": "FTSE 100 (UK)" }
+    ]
+  },
+  "contractMonths": {
+    "title": "Contract Month Symbols",
+    "groups": [
+      {
+        "title": "Hang Seng Futures",
+        "months": [
+          { "code": "F", "month": "January" },
+          { "code": "G", "month": "February" },
+          { "code": "H", "month": "March" },
+          { "code": "J", "month": "April" },
+          { "code": "K", "month": "May" },
+          { "code": "M", "month": "June" },
+          { "code": "N", "month": "July" },
+          { "code": "Q", "month": "August" },
+          { "code": "U", "month": "September" },
+          { "code": "V", "month": "October" },
+          { "code": "X", "month": "November" },
+          { "code": "Z", "month": "December" }
+        ]
+      },
+      {
+        "title": "Nikkei 225 Futures",
+        "months": [
+          { "code": "H", "month": "March" },
+          { "code": "M", "month": "June" },
+          { "code": "U", "month": "September" },
+          { "code": "Z", "month": "December" }
+        ]
+      }
+    ]
+  }
+}
+

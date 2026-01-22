@@ -1,0 +1,180 @@
+{
+  "pageTitle": "Summer & Winter",
+  "tables": {
+    "columns": ["Tanggal Setempat", "Waktu Setempat", "DST", "UTC Offset", "Zona Waktu"]
+  },
+  "uk": {
+    "title": "Waktu Inggris / UK Time / British Time",
+    "p1": "UK Time = Inggris, Wales, Skotlandia, Irlandia Utara.",
+    "p2": "Waktu Inggris di zona waktu Eropa Barat (Zona Waktu Eropa Barat). Sama seperti negara-negara Eropa lainnya, Waktu Musim Panas diberlakukan di Inggris, dimana waktu maju satu jam (GMT + 1). Setelah Musim Panas, ketika Waktu Inggris bergeser mundur satu jam ke Waktu Eropa Barat (WET) atau (GMT).",
+    "cards": {
+      "start": {
+        "title": "Waktu Musim Panas Dimulai (25 Mar)",
+        "description": "Ketika waktu standar lokal akan mencapai Minggu, 25 Maret 2012, 01:00:00 dimajukan 1 jam menjadi Minggu, 25 Maret 2012, 02:00:00 waktu siang hari setempat sebagai gantinya."
+      },
+      "end": {
+        "title": "Waktu Musim Panas Berakhir (28 Okt)",
+        "description": "Ketika waktu siang hari setempat akan segera tiba Minggu, 28 Oktober 2012, 02:00:00 jam diputar mundur 1 jam menjadi Minggu, 28 Oktober 2012, 01:00:00 waktu standar setempat sebagai gantinya."
+      }
+    },
+    "forward": {
+      "title": "Detik sebelum dan sesudah perubahan waktu maju",
+      "rows": [
+        {
+          "localDate": "Minggu, 25 Maret 2012",
+          "localTime": "00:59:59",
+          "dst": "Tidak",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        },
+        {
+          "localDate": "01:00:00 → 02:00:00",
+          "localTime": "+1h",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        },
+        {
+          "localDate": "Minggu, 25 Maret 2012",
+          "localTime": "02:00:01",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        }
+      ]
+    },
+    "backward": {
+      "title": "Detik sebelum dan sesudah perubahan waktu mundur",
+      "rows": [
+        {
+          "localDate": "Minggu, 28 Oktober 2012",
+          "localTime": "00:59:59",
+          "dst": "+1h",
+          "utcOffset": "UTC+1h",
+          "timeZone": "BST"
+        },
+        {
+          "localDate": "02:00:00 → 01:00:00",
+          "localTime": "-1h",
+          "dst": "0h",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        },
+        {
+          "localDate": "Minggu, 28 Oktober 2012",
+          "localTime": "01:00:01",
+          "dst": "Tidak",
+          "utcOffset": "UTC",
+          "timeZone": "GMT"
+        }
+      ]
+    },
+    "formula": {
+      "title": "Rumus Waktu Musim Panas Eropa",
+      "forwardLabel": "Waktu Maju:",
+      "forward": "Mulai: Minggu 31 - (((SS * y) / 4) + 4 mod 7); Maret pukul 01:00 GMT",
+      "backwardLabel": "Waktu Mundur:",
+      "backward": "Berakhir: Minggu 31 - (((SS * y) / 4) + 1 mod 7); Oktober pukul 01:00 GMT",
+      "note": "Catatan: Rumus berlaku hingga 2099. y adalah tahun."
+    },
+    "schedule": {
+      "title": "Jadwal BST (2010-2015)",
+      "headers": ["Tahun", "BST Mulai", "BST Berakhir"],
+      "rows": [
+        { "year": "2010", "start": "Minggu, 28 Maret 2010", "end": "Minggu, 31 Oktober 2010" },
+        { "year": "2011", "start": "Minggu, 27 Maret 2011", "end": "Minggu, 30 Oktober 2011" },
+        { "year": "2012", "start": "Minggu, 25 Maret 2012", "end": "Minggu, 28 Oktober 2012" },
+        { "year": "2013", "start": "Minggu, 31 Maret 2013", "end": "Minggu, 27 Oktober 2013" },
+        { "year": "2014", "start": "Minggu, 30 Maret 2014", "end": "Minggu, 26 Oktober 2014" },
+        { "year": "2015", "start": "Minggu, 29 Maret 2015", "end": "Minggu, 25 Oktober 2015" }
+      ]
+    }
+  },
+  "us": {
+    "title": "Waktu AS & Kanada",
+    "p1": "Waktu AS & Kanada - Waktu Standar Timur (EST) / Waktu Siang Hari Timur (EDT)",
+    "p2": "Di AS dan Kanada, zona waktu ini secara umum disebut Waktu Timur (ET). Khususnya, ini adalah Waktu Standar Timur (EST) ketika waktu standar diamati (musim dingin), dan Waktu Siang Hari Timur (EDT) ketika waktu musim panas diamati (musim semi, panas, gugur).",
+    "cards": {
+      "start": {
+        "title": "Waktu Musim Panas Dimulai (Minggu ke-2 Maret)",
+        "description": "Ketika waktu standar lokal akan mencapai Minggu, 11 Maret 2012, 02:00:00, dimajukan 1 jam menjadi Minggu, 11 Maret 2012, 03:00:00 waktu siang hari setempat sebagai gantinya."
+      },
+      "end": {
+        "title": "Waktu Musim Panas Berakhir (Minggu ke-1 November)",
+        "description": "Ketika waktu siang hari setempat akan segera tiba Minggu, 4 November 2012, 02:00:00, jam diputar mundur 1 jam menjadi Minggu, 4 November 2012, 01:00:00 waktu standar setempat sebagai gantinya."
+      }
+    },
+    "forward": {
+      "title": "Detik sebelum dan sesudah perubahan waktu maju",
+      "rows": [
+        {
+          "localDate": "Minggu, 11 Maret 2012",
+          "localTime": "01:59:59",
+          "dst": "Tidak",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        },
+        {
+          "localDate": "02:00:00 → 03:00:00",
+          "localTime": "+1h",
+          "dst": "Ya",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        },
+        {
+          "localDate": "Minggu, 11 Maret 2012",
+          "localTime": "03:00:01",
+          "dst": "Ya",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        }
+      ]
+    },
+    "backward": {
+      "title": "Detik sebelum dan sesudah perubahan waktu mundur",
+      "rows": [
+        {
+          "localDate": "Minggu, 4 November 2012",
+          "localTime": "00:59:59",
+          "dst": "Ya",
+          "utcOffset": "UTC-4h",
+          "timeZone": "EDT"
+        },
+        {
+          "localDate": "02:00:00 → 01:00:00",
+          "localTime": "-1h",
+          "dst": "Tidak",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        },
+        {
+          "localDate": "Minggu, 4 November 2012",
+          "localTime": "01:00:01",
+          "dst": "Tidak",
+          "utcOffset": "UTC-5h",
+          "timeZone": "EST"
+        }
+      ]
+    },
+    "formula": {
+      "title": "Rumus Perubahan Waktu AS/Kanada",
+      "forwardLabel": "Waktu Maju:",
+      "forward": "Mulai: Minggu ke-2 Maret pukul 02:00 waktu setempat",
+      "backwardLabel": "Waktu Mundur:",
+      "backward": "Berakhir: Minggu ke-1 November pukul 02:00 waktu setempat"
+    },
+    "schedule": {
+      "title": "Jadwal Waktu Musim Panas (2010-2015)",
+      "headers": ["Tahun", "Mulai DST", "Akhir DST"],
+      "rows": [
+        { "year": "2010", "start": "Minggu, 14 Maret 2010", "end": "Minggu, 7 November 2010" },
+        { "year": "2011", "start": "Minggu, 13 Maret 2011", "end": "Minggu, 6 November 2011" },
+        { "year": "2012", "start": "Minggu, 11 Maret 2012", "end": "Minggu, 4 November 2012" },
+        { "year": "2013", "start": "Minggu, 10 Maret 2013", "end": "Minggu, 3 November 2013" },
+        { "year": "2014", "start": "Minggu, 9 Maret 2014", "end": "Minggu, 2 November 2014" },
+        { "year": "2015", "start": "Minggu, 8 Maret 2015", "end": "Minggu, 1 November 2015" }
+      ]
+    }
+  }
+}
+
