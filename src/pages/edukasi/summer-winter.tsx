@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next";
+import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import PageTemplate from "@/components/templates/PageTemplate";
@@ -41,7 +42,13 @@ function InfoCard({
       <div className="px-4 py-3 font-semibold text-gray-700 text-xs md:text-sm">{title}</div>
       <div className="grid grid-cols-1 sm:grid-cols-[200px_1fr]">
         <div className="bg-amber-50 flex items-center justify-center p-4">
-          <img src={imageSrc} alt={title} className="max-h-28 object-contain" />
+          <Image
+            src={imageSrc}
+            alt={title}
+            width={160}
+            height={160}
+            className="max-h-28 w-auto object-contain"
+          />
         </div>
         <div className="p-4 text-xs md:text-sm text-gray-600 leading-relaxed">{description}</div>
       </div>
@@ -269,4 +276,3 @@ export default function SummerWinterPage() {
     </PageTemplate>
   );
 }
-
