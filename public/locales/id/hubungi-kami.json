@@ -28,5 +28,9 @@
   "tombol": {
     "pengajuan": "PENGADUAN ONLINE",
     "keluhan": "PENYAMPAIAN KELUHAN ONLINE"
+  },
+  "aksi": {
+    "copyAlamat": "Copy alamat",
+    "copiedAlamat": "Alamat tersalin"
   }
 }

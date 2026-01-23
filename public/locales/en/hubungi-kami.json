@@ -28,5 +28,9 @@
   "tombol": {
     "pengajuan": "ONLINE COMPLAINT",
     "keluhan": "ONLINE COMPLAINT"
+  },
+  "aksi": {
+    "copyAlamat": "Copy address",
+    "copiedAlamat": "Address copied"
   }
 }
