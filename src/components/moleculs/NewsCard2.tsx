@@ -85,11 +85,16 @@ export default function NewsCard2({ date, title, content, link, image, category,
     const getValidImageUrl = (url: string | undefined): string | null => {
         if (!url) return null;
         try {
+            const portalBaseUrl =
+                process.env.NEXT_PUBLIC_PORTAL_ASSET_URL ||
+                process.env.NEXT_PUBLIC_PORTAL_API_URL ||
+                "https://portalnews.newsmaker.id";
+
             // Perbaiki URL jika relatif
             let finalUrl = url;
             if (!url.startsWith('http') && !url.startsWith('data:')) {
                 // Jika URL relatif, tambahkan base URL
-                finalUrl = `https://portalnews.newsmaker.id/${url.replace(/^\/+/, '')}`;
+                finalUrl = new URL(url.replace(/^\/+/, ""), `${portalBaseUrl.replace(/\/+$/, "")}/`).toString();
             }
             // Validasi URL
             new URL(finalUrl);
