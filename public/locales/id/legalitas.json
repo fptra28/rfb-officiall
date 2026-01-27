@@ -1,7 +1,21 @@
 {
   "pageTitle": "Legalitas - PT Solid Gold Berjangka",
   "businessContainer": {
-    "title": "Legalitas Bisnis"
+    "title": "Legalitas Bisnis",
+    "companyName": "PT RIFAN FINANCINDO BERJANGKA",
+    "membership1": "Member of Jakarta Futures Exchange",
+    "membership2": "Member of Indonesian Derivatives Clearing House",
+    "legalItems": [
+      "Akta Perubahan Anggaran Dasar PT. Rifan Financindo Komoditas : No. 32 tanggal 7 Maret 2000 oleh Notaris Linda Ibrahim SH.",
+      "Pengesahan Departemen Hukum dan Perundang - Undangan Republik Indonesia Nomor : C-21254 HT.01.04.TH.2000",
+      "Surat Persetujuan Anggota (SPAB) di Bursa Berjangka Jakarta Nomor : SPAB-024/BBJ/09/00",
+      "Izin Usaha Pialang Berjangka : Keputusan Kepala BAPPEBTI Nomor : 08/BAPPEBTI/SI/XII/2000",
+      "Keanggotaan PT Kliring Berjangka Indonesia Nomor : 03/AK - KBI/XII 2000",
+      "Perjanjian Kerjasama dengan Pedagang Penyelenggara sistem Perdagangan Alternatif PT. Royal Assetindo, Surat Perjanjian Kerjasama, Nomor : 017/KOM/RFB-RA/III/2006",
+      "Pemberian persetujuan sebagai peserta Sistem Perdagangan Alternatif Nomor : 1162/BAPPEBTI/SP/5/2007",
+      "Penetapan sebagai Pialang Berjangka yang Melakukan Kegiatan Penerimaan Nasabah secara Elektronik On-Line di Bidang Perdagangan Berjangka Komoditi kepada PT.Rifan Financindo Berjangka Nomor : 28/BAPPEBTI/KEP-PBK/09/2014",
+      "Perantara Perdagangan Efek Derivatif Keuangan - OJK"
+    ]
   },
   "cities": {
     "jakarta": "Jakarta",

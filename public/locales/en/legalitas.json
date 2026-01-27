@@ -1,7 +1,21 @@
 {
-  "pageTitle": "Legality - PT Solid Gold Berjangka",
+  "pageTitle": "Legality - PT Rifan Financindo Berjangka",
   "businessContainer": {
-    "title": "Business Legality"
+    "title": "Business Legality",
+    "companyName": "PT RIFAN FINANCINDO BERJANGKA",
+    "membership1": "Member of Jakarta Futures Exchange",
+    "membership2": "Member of Indonesian Derivatives Clearing House",
+    "legalItems": [
+      "Deed of Amendment to the Articles of Association of PT Rifan Financindo Komoditas: No. 32 dated 7 March 2000, before Notary Linda Ibrahim, SH.",
+      "Ratification by the Ministry of Law and Legislation of the Republic of Indonesia No.: C-21254 HT.01.04.TH.2000",
+      "Approval Letter as an Exchange Member (SPAB) at the Jakarta Futures Exchange No.: SPAB-024/BBJ/09/00",
+      "Futures Broker Business License: Decree of the Head of BAPPEBTI No.: 08/BAPPEBTI/SI/XII/2000",
+      "Membership of PT Kliring Berjangka Indonesia No.: 03/AK-KBI/XII/2000",
+      "Cooperation Agreement with the Alternative Trading System Operator, PT Royal Assetindo: Agreement No.: 017/KOM/RFB-RA/III/2006",
+      "Approval as a participant in the Alternative Trading System No.: 1162/BAPPEBTI/SP/5/2007",
+      "Appointment as a Futures Broker authorized to onboard customers electronically (online) in commodity futures trading to PT Rifan Financindo Berjangka No.: 28/BAPPEBTI/KEP-PBK/09/2014",
+      "Financial Derivatives Securities Trading Intermediary – OJK"
+    ]
   },
   "cities": {
     "jakarta": "Jakarta",
