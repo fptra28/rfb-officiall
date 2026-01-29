@@ -56,8 +56,7 @@ export default function PetunjukTransaksi() {
             requirements: {
                 internet: '',
                 device: '',
-                access: '',
-                login_url: 'http://etrade.rifanberjangka.com/login.php'
+                access: ''
             },
             step3: '',
             step3_desc: [] as string[]
@@ -81,6 +80,7 @@ export default function PetunjukTransaksi() {
 
     const { title, intro, steps, terms } = data;
     const requirements = steps.requirements || defaultData.steps.requirements;
+    const accessText = 'Akses ke platform online trading yang disediakan perusahaan';
 
     // Show loading state if translations aren't ready
     if (!ready) {
@@ -130,13 +130,7 @@ export default function PetunjukTransaksi() {
                                     <li>{requirements.internet}</li>
                                     <li>{requirements.device}</li>
                                     <li>
-                                        {requirements.access}
-                                        <a
-                                            href={requirements.login_url}
-                                            className="text-green-600 hover:text-green-700 underline break-all ml-1"
-                                        >
-                                            {requirements.login_url}
-                                        </a>
+                                        {accessText}
                                     </li>
                                 </ul>
                             </li>

@@ -9,8 +9,7 @@
     "requirements": {
       "internet": "Koneksi internet stabil",
       "device": "Perangkat pendukung seperti laptop, PC, atau smartphone",
-      "access": "Akses ke platform online trading melalui alamat:",
-      "login_url": "http://etrade.rifanberjangka.com/login.php"
+      "access": "Akses ke platform online trading yang disediakan perusahaan"
     },
     "step3": "Login ke Platform",
     "step3_desc": [

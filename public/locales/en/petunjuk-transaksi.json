@@ -9,8 +9,7 @@
     "requirements": {
       "internet": "Stable internet connection",
       "device": "Supporting devices such as a laptop, PC, or smartphone",
-      "access": "Access to the online trading platform at:",
-      "login_url": "http://etrade.rifanberjangka.com/login.php"
+      "access": "Access to the online trading platform"
     },
     "step3": "Login to Platform",
     "step3_desc": [
