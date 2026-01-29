@@ -1,7 +1,7 @@
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useState, useEffect } from "react";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import PageTemplate from "@/components/templates/PageTemplate";
 import CarouselWithContent from "@/components/organisms/CarouselWithContent";
 import ProdukContainer from "@/components/organisms/ProdukContainer";
@@ -12,20 +12,19 @@ import Iso from "@/components/organisms/Market";
 import Pengumuman from "@/components/organisms/Pengumuman";
 import LiveQuotesCta from "@/components/organisms/LiveQuotesCta";
 
-
-export const getStaticProps: GetStaticProps = async ({ locale = 'id' }) => {
+export const getStaticProps: GetStaticProps = async ({ locale = "id" }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale, [
-        'common',
-        'navbar',
-        'about-us',
-        'produk',
-        'berita',
-        'market',
-        'pengumuman',
-        'trading',
-        'footer'
+        "common",
+        "navbar",
+        "about-us",
+        "produk",
+        "berita",
+        "market",
+        "pengumuman",
+        "trading",
+        "footer",
       ])),
     },
   };
@@ -33,8 +32,8 @@ export const getStaticProps: GetStaticProps = async ({ locale = 'id' }) => {
 
 // Import WelcomeModal dengan dynamic import dan non-SSR
 const WelcomeModal = dynamic(
-  () => import('@/components/moleculs/WelcomeModal'),
-  { ssr: false }
+  () => import("@/components/moleculs/WelcomeModal"),
+  { ssr: false },
 );
 
 const HomePage = () => {
@@ -49,10 +48,10 @@ const HomePage = () => {
 
   return (
     <PageTemplate>
-      <WelcomeModal 
+      {/* <WelcomeModal 
         isOpen={showModal} 
         onClose={handleCloseModal} 
-      />
+      /> */}
 
       {/* Carousel */}
       <CarouselWithContent />
@@ -60,7 +59,6 @@ const HomePage = () => {
       {/* Content */}
       <div className="py-10 bg-white space-y-10">
         <div className="space-y-10 mb-20">
-          
           <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
             <AboutUs />
           </div>
@@ -82,7 +80,7 @@ const HomePage = () => {
           <hr className="border-gray-200" />
 
           <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
-            <BeritaSection/>
+            <BeritaSection />
           </div>
 
           <hr className="border-gray-200" />
@@ -96,12 +94,10 @@ const HomePage = () => {
           <div className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-36 2xl:px-52">
             <InstitutionsSection />
           </div>
-
         </div>
       </div>
     </PageTemplate>
   );
 };
-
 
 export default HomePage;

@@ -19,7 +19,7 @@ export default function CarouselWithContent() {
         </div>
 
         <div className="mt-8 md:mt-0 w-full md:w-1/2 flex-shrink-0">
-          <div className="relative w-full h-[300px] md:h-[450px] lg:h-[420px]">
+          <div className="relative w-full h-[400px]">
             <div
               className="w-full h-full bg-contain bg-no-repeat bg-center"
               style={{
