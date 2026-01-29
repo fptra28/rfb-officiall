@@ -81,7 +81,6 @@ const NavBar = () => {
         { key: 'summer-winter', label: t('menu.education.submenu.summerWinter'), href: "/edukasi/summer-winter" },
       ],
     },
-    { key: 'careers', label: t('menu.profile.submenu.careers'), href: "/careers" },
   ];
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
